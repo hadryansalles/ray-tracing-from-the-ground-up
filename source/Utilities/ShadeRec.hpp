@@ -5,9 +5,9 @@
 
 class World;	// only need a forward class declaration as the World data member is a reference
 
-#include "Point3D.h"
-#include "Normal.h"
-#include "RGBColor.h"
+#include "Point3D.hpp"
+#include "Normal.hpp"
+#include "RGBColor.hpp"
 
 class ShadeRec {
 	public:

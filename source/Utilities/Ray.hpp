@@ -1,8 +1,8 @@
 #ifndef __RAY__
 #define __RAY__
 
-#include "Point3D.h"
-#include "Vector3D.h"
+#include "Point3D.hpp"
+#include "Vector3D.hpp"
 
 class Ray {
 	public:

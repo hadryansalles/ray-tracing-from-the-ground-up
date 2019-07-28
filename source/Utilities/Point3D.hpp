@@ -3,8 +3,8 @@
 
 // This file contains the defintion of the class Point3D
 
-#include "Matrix.h"
-#include "Vector3D.h"
+#include "Matrix.hpp"
+#include "Vector3D.hpp"
 
 class Point3D {
 	public:

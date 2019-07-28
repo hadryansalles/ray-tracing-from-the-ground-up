@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-#include "Normal.h"
+#include "Normal.hpp"
 
 
 // ---------------------------------------------------------- default constructor

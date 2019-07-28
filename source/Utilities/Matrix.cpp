@@ -1,6 +1,6 @@
 // This file contains the definition of the class Matrix
 
-#include "Matrix.h"
+#include "Matrix.hpp"
 
 // ----------------------------------------------------------------------- default constructor
 // a default matrix is an identity matrix

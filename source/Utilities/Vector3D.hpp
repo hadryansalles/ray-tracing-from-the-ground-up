@@ -3,7 +3,7 @@
 
 // This file contains the defintion of the class Vector3D
 
-#include "Matrix.h"
+#include "Matrix.hpp"
 
 class Normal;
 class Point3D;

@@ -4,9 +4,9 @@
 
 // This file contains the declaration of the class Normal
 
-#include "Matrix.h"
-#include "Vector3D.h"
-#include "Point3D.h"
+#include "Matrix.hpp"
+#include "Vector3D.hpp"
+#include "Point3D.hpp"
 
 class Normal 
 {	

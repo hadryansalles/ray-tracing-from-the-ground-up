@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL2/SDL.h>
-#include "../Utilities/RGBColor.h"
+#include "../Utilities/RGBColor.hpp"
 
 class Window{
 private:
