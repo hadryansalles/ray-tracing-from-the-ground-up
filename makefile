@@ -1,12 +1,33 @@
-OBJS = source/files/*.cpp
+APP = RTX
+CC = g++
+FLAGS =	-c -W -Wall -ansi -pedantic
+LINKS = -lSDL2
+RM = rm -rf
 
-OBJ_NAME = RTX
+SOURCE = $(wildcard ./source/*.cpp)
+INCLUDE = $(wildcard ./include/*.hpp)
+OBJECTS = $(subst .cpp,.o,$(subst source,build/objects,$(SOURCE)))
 
-all: $(OBJS)
-		g++ $(OBJS) -w -lSDL2 -o $(OBJ_NAME)
+all : objectsFolder build/$(APP)
 
-run: 
-	./$(OBJ_NAME)
+./build/$(APP) : $(OBJECTS)
+	@ echo 'Building binary $@'
+	$(CC) $^ $(LINKS) -o $@
 
-clean: 
-	rm -f $(OBJ_NAME)
+./build/objects/%.o: ./source/%.cpp ./include/%.hpp
+	@ echo 'Building target $<'
+	$(CC) $< $(FLAGS) $(LINKS) -o $@
+
+./build/objects/main.o: ./source/main.cpp
+	@ echo 'Building target $<'
+	$(CC) $< $(FLAGS) $(LINKS) -o $@
+
+objectsFolder:
+	@ mkdir -p build/objects
+
+clean:
+	@ $(RM) ./build/objects/*.o ./build/$(APP) *~
+	@ rmdir ./build/objects
+
+run:
+	./build/$(APP)
