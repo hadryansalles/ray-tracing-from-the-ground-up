@@ -8,9 +8,9 @@ SOURCE = $(wildcard ./source/*/*.cpp)
 INCLUDE = $(wildcard ./source/*/*.hpp)
 OBJECTS = $(subst .cpp,.o,$(subst source/*,build/objects,$(SOURCE)))
 
-all : objectsFolder build/$(APP)
+all: build/$(APP)
 
-./build/$(APP) : $(OBJECTS)
+./build/$(APP): $(OBJECTS)
 	@ echo 'Building binary $@'
 	$(CC) $^ $(LINKS) -o $@
 
@@ -22,12 +22,11 @@ all : objectsFolder build/$(APP)
 	@ echo 'Building target $<'
 	$(CC) $< $(FLAGS) $(LINKS) -o $@
 
-objectsFolder:
-	@ mkdir -p build/objects
-
 clean:
-	@ $(RM) ./build/objects/*.o ./build/$(APP) *~
-	@ rmdir ./build/objects
+	@ $(RM) ./source/*/*.o ./build/$(APP) *~
 
 run:
 	./build/$(APP)
+
+it:
+	make all run clean
