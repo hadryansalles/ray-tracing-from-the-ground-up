@@ -1,11 +1,7 @@
-// This file contains the definition of the class Matrix
-
 #include "Matrix.hpp"
 
-// ----------------------------------------------------------------------- default constructor
 // a default matrix is an identity matrix
-
-Matrix::Matrix(void) {	
+Matrix::Matrix() {	
 	for (int x = 0; x < 4; x++)
 		for (int y = 0; y < 4; y++) {
 			if (x == y)
@@ -15,27 +11,15 @@ Matrix::Matrix(void) {
 		}
 }
 
-
-// ----------------------------------------------------------------------- copy constructor
-
 Matrix::Matrix (const Matrix& mat) {
 	for (int x = 0; x < 4; x++)				
 		for (int y = 0; y < 4; y++)			
 			m[x][y] = mat.m[x][y];	
 }
 
+Matrix::~Matrix () {}   
 
-// ----------------------------------------------------------------------- destructor
-
-Matrix::~Matrix (void) {}   
-
-
-
-
-// ----------------------------------------------------------------------- assignment operator
-
-Matrix& 
-Matrix::operator= (const Matrix& rhs) {
+Matrix& Matrix::operator= (const Matrix& rhs) {
 	if (this == &rhs)
 		return (*this);
 
@@ -46,12 +30,8 @@ Matrix::operator= (const Matrix& rhs) {
 	return (*this);
 }
 
-
-// ----------------------------------------------------------------------- operator*
 // multiplication of two matrices
-
-Matrix 
-Matrix::operator* (const Matrix& mat) const {
+Matrix Matrix::operator* (const Matrix& mat) const {
 	Matrix 	product;
 	
 	for (int y = 0; y < 4; y++)
@@ -67,12 +47,8 @@ Matrix::operator* (const Matrix& mat) const {
 	return (product);
 }
 
-
-// ----------------------------------------------------------------------- operator/
 // division by a scalar
-
-Matrix 
-Matrix::operator/ (const double d) {
+Matrix Matrix::operator/ (const double d) {
 	for (int x = 0; x < 4; x++)				
 		for (int y = 0; y < 4; y++)			
 			m[x][y] = m[x][y] / d;	
@@ -80,13 +56,7 @@ Matrix::operator/ (const double d) {
 	return (*this);
 }
 
-
-
-// ----------------------------------------------------------------------- set_identity
-// set matrix to the identity matrix
-
-void											
-Matrix::set_identity(void) {
+void Matrix::set_identity(void) {
     for (int x = 0; x < 4; x++)
 		for (int y = 0; y < 4; y++) {
 			if (x == y)
@@ -95,9 +65,3 @@ Matrix::set_identity(void) {
 				m[x][y] = 0.0;
 		}
 }
-
-
-
-
-
-
