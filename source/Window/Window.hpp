@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL2/SDL.h>
+#include "../Utilities/RGBColor.h"
 
 class Window{
 private:
@@ -14,7 +15,7 @@ public:
     ~Window();
 
     void init();
-    void putPixel(int x, int y, int* color);
+    void putPixel(int x, int y, RGBColor color);
     bool shouldClose();
     void close();
 };

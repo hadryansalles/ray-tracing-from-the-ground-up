@@ -1,4 +1,4 @@
-#include "../include/Window.hpp"
+#include "Window.hpp"
 
 Window::Window(int width, int height) {
 	SCREEN_HEIGHT = height;
@@ -17,8 +17,8 @@ void Window::init(){
 	SDL_RenderClear(renderer);
 }
 
-void Window::putPixel(int x, int y, int* color){
-	SDL_SetRenderDrawColor(renderer, color[0], color[1], color[2], 255);
+void Window::putPixel(int x, int y, RGBColor color){
+	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
 	SDL_RenderDrawPoint(renderer, x, y);
 	SDL_RenderPresent(renderer);
 }
