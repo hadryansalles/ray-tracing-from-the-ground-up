@@ -1,5 +1,4 @@
-#ifndef __CONSTANTS__
-#define __CONSTANTS__
+#pragma once
 
 #include <stdlib.h>
 #include "RGBColor.hpp"
@@ -18,5 +17,3 @@ const RGBColor	white(1.0);
 const RGBColor	red(1.0, 0.0, 0.0);
 
 const float 	invRAND_MAX = 1.0 / (float)RAND_MAX;
-
-#endif
