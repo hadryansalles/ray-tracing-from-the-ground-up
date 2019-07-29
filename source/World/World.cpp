@@ -34,7 +34,6 @@ World::~World() {
 		tracer_ptr = NULL;
 	}	
 	if(window){
-		window->close();
 		delete window;
 		window = NULL;
 	}
@@ -63,8 +62,8 @@ void World::render_scene() {
 			}
 		}	
 	}
-	while(!quit && !window->shouldClose()){ 
-		// wait 
+	while(!quit && !window->shouldClose()){
+
 	}
 }  
 

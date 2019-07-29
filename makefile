@@ -1,7 +1,7 @@
 APP = RTX
 CC = g++
 FLAGS =	-W -Wall -ansi -pedantic
-LINKS = -lSDL2
+LINKS = -lSDL2 -lpthread -pthread -std=c++11
 RM = rm -rf
 
 SOURCE = 	$(wildcard ./source/GeometricObjects/*.cpp) \
