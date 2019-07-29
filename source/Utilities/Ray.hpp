@@ -1,25 +1,17 @@
-#ifndef __RAY__
-#define __RAY__
+#pragma once 
 
 #include "Point3D.hpp"
 #include "Vector3D.hpp"
 
 class Ray {
-	public:
+public:	
+	Point3D	o;  		// origin 
+	Vector3D d; 		// direction 
 	
-		Point3D			o;  	// origin 
-		Vector3D		d; 		// direction 
-		
-		Ray(void);			
-		
-		Ray(const Point3D& origin, const Vector3D& dir);	
-		
-		Ray(const Ray& ray); 		
-		
-		Ray& 						
-		operator= (const Ray& rhs);
-		 								
-		~Ray(void);
-};
+	Ray();			
+	Ray(const Point3D& origin, const Vector3D& dir);	
+	Ray(const Ray& ray); 		
+	~Ray(void);
 
-#endif
+	Ray& operator= (const Ray& rhs);								
+};
