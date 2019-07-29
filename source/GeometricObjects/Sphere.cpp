@@ -2,16 +2,11 @@
 
 const double Sphere::kEpsilon = 0.001;
 					
-// ---------------------------------------------------------------- default constructor
-
 Sphere::Sphere(void)	
 	: 	GeometricObject(),
 		center(0.0),
 		radius(1.0)
 {}
-
-
-// ---------------------------------------------------------------- constructor
 
 Sphere::Sphere(Point3D c, double r)
 	: 	GeometricObject(),
@@ -19,16 +14,9 @@ Sphere::Sphere(Point3D c, double r)
 		radius(r)
 {}
 
-
-// ---------------------------------------------------------------- clone
-
-GeometricObject* 
-Sphere::clone(void) const {
+GeometricObject* Sphere::clone(void) const {
 	return (new Sphere(*this));
 }
-
-
-// ---------------------------------------------------------------- copy constructor
 
 Sphere::Sphere (const Sphere& sphere)
 	: 	GeometricObject(sphere),
@@ -36,12 +24,7 @@ Sphere::Sphere (const Sphere& sphere)
 		radius(sphere.radius)
 {}
 
-
-
-// ---------------------------------------------------------------- assignment operator
-
-Sphere& 
-Sphere::operator= (const Sphere& rhs)		
+Sphere& Sphere::operator= (const Sphere& rhs)		
 {
 	if (this == &rhs)
 		return (*this);
@@ -54,16 +37,23 @@ Sphere::operator= (const Sphere& rhs)
 	return (*this);
 }
 
-
-// ---------------------------------------------------------------- destructor
-
 Sphere::~Sphere(void) {}
 
+void Sphere::set_center(const Point3D& c) {
+	center = c;
+}
+		
+void Sphere::set_center(const double x, const double y, const double z) {
+	center.x = x;
+	center.y = y;
+	center.z = z;
+}
+		
+void Sphere::set_radius(const double r) {
+	radius = r;
+}
 
-//---------------------------------------------------------------- hit
-
-bool
-Sphere::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
+bool Sphere::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 	double 		t;
 	Vector3D	temp 	= ray.o - center;
 	double 		a 		= ray.d * ray.d;
@@ -97,10 +87,3 @@ Sphere::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 	
 	return (false);
 }
-
-
-
-
-
-
-
