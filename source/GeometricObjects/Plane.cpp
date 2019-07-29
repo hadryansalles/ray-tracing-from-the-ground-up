@@ -2,16 +2,11 @@
 
 const double Plane::kEpsilon = 0.001;
 
-// ----------------------------------------------------------------------  default constructor
-
 Plane::Plane(void)	
 	: 	GeometricObject(),
 		a(0.0),
 		n(0, 1, 0)						
 {}
-
-
-// ----------------------------------------------------------------------  constructor
 
 Plane::Plane(const Point3D& point, const Normal& normal)
 	:	GeometricObject(),
@@ -21,29 +16,17 @@ Plane::Plane(const Point3D& point, const Normal& normal)
 		n.normalize();
 }
 
-
-// ---------------------------------------------------------------- copy constructor
-
 Plane::Plane(const Plane& plane) 
 	:	GeometricObject(plane),
 		a(plane.a),
 		n(plane.n) 				
 {}
 
-
-// ---------------------------------------------------------------- clone
-
-GeometricObject* 
-Plane::clone(void) const {
+GeometricObject* Plane::clone(void) const {
 	return (new Plane(*this));
 }
 
-
-// ---------------------------------------------------------------- assignment operator
-
-Plane& 
-Plane::operator= (const Plane& rhs)	{
-	
+Plane& Plane::operator= (const Plane& rhs)	{
 	if (this == &rhs)
 		return (*this);
 
@@ -55,17 +38,10 @@ Plane::operator= (const Plane& rhs)	{
 	return (*this);
 }
 
-
-// ---------------------------------------------------------------- destructor
-
 Plane::~Plane(void)				
 {}
 
-
-// ----------------------------------------------------------------- hit
-
-bool 															 
-Plane::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {	
+bool Plane::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {	
 	float t = (a - ray.o) * n / (ray.d * n); 
 														
 	if (t > kEpsilon) {
@@ -78,4 +54,3 @@ Plane::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 
 	return(false);
 }
-

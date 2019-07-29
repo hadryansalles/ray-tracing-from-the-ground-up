@@ -22,7 +22,7 @@ public:
 	RGBColor get_color(void);
 
 protected:
-	RGBColor   color; // only used in chapter 3
+	RGBColor color;
 	GeometricObject& operator= (const GeometricObject& rhs);
 };
 

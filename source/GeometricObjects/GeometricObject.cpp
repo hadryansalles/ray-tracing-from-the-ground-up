@@ -12,7 +12,6 @@ GeometricObject& GeometricObject::operator= (const GeometricObject& rhs) {
 	if (this == &rhs)
 		return (*this);
 
-	//TODO: REMOVE AFTER CHAPTER 3	
 	color = rhs.color;
 
 	return (*this);

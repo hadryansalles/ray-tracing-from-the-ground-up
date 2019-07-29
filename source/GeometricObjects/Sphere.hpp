@@ -1,8 +1,6 @@
-#ifndef __SPHERE__
-#define __SPHERE__
+#pragma once
 
-// This file contains the declaration of the class Sphere
-
+#include "math.h"
 #include "GeometricObject.hpp"
 
 //-------------------------------------------------------------------------------- class Sphere
@@ -64,5 +62,3 @@ inline void
 Sphere::set_radius(const double r) {
 	radius = r;
 }
-
-#endif
