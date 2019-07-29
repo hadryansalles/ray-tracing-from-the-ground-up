@@ -1,7 +1,6 @@
 #pragma once
-#include <SDL2/SDL.h>
-#include "../Utilities/RGBColor.hpp"
 
+#include <SDL2/SDL.h>
 class Window{
 private:
     int SCREEN_WIDTH;

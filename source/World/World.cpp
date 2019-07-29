@@ -17,17 +17,18 @@
 #include "../Utilities/Maths.hpp"
 
 // build functions
-#include "../build/BuildSingleSphere.cpp"
+#include "../build/BuildSingleSphere.hpp"
+
 //#include "BuildMultipleObjects.cpp"
 //#include "BuildBBCoverPic.cpp"
 
-World::World(void)
+World::World()
 	:  	background_color(black),
 		tracer_ptr(NULL),
 		window(NULL)
 {}
 
-World::~World(void) {		
+World::~World() {		
 	if(tracer_ptr) {
 		delete tracer_ptr;
 		tracer_ptr = NULL;
@@ -41,15 +42,15 @@ World::~World(void) {
 }
 
 // This uses orthographic viewing along the zw axis
-void World::render_scene(void) const {
+void World::render_scene() {
 	RGBColor	pixel_color;	 	
 	Ray			ray;					
 	int 		hres 	= vp.hres;
 	int 		vres 	= vp.vres;
 	float		s		= vp.s;
 	float		zw		= 100.0;			// hardwired in
-	
 	window = new Window(vres, hres);
+	window->init();
 	ray.d = Vector3D(0, 0, -1);
 	
 	for (int r = 0; r < vres && !window->shouldClose(); r++)			// up
@@ -58,7 +59,9 @@ void World::render_scene(void) const {
 			pixel_color = tracer_ptr->trace_ray(ray);
 			display_pixel(r, c, pixel_color);
 		}	
-	while(!window->shouldClose()){ // wait }
+	while(!window->shouldClose()){ 
+		// wait 
+	}
 }  
 
 RGBColor World::max_to_one(const RGBColor& c) const  {
@@ -127,7 +130,7 @@ ShadeRec World::hit_bare_bones_objects(const Ray& ray) {
 
 // Deletes the objects in the objects array, and erases the array.
 // The objects array still exists, because it's an automatic variable, but it's empty 
-void World::delete_objects(void) {
+void World::delete_objects() {
 	int num_objects = objects.size();
 	
 	for (int j = 0; j < num_objects; j++) {

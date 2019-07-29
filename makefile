@@ -14,7 +14,7 @@ all: build/$(APP)
 	@ echo 'Building binary $@'
 	$(CC) $^ $(LINKS) -o $@
 
-./build/objects/%.o: ./source/%.cpp ./include/%.hpp
+./build/objects/%.o: ./source/%.cpp ./source/%.hpp
 	@ echo 'Building target $<'
 	$(CC) $< $(FLAGS) $(LINKS) -o $@
 
@@ -27,6 +27,3 @@ clean:
 
 run:
 	./build/$(APP)
-
-it:
-	make all run clean

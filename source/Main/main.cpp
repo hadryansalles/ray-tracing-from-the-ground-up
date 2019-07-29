@@ -1,5 +1,6 @@
-#include "../Window/Window.hpp"
+#include "../World/World.hpp"
 
+/* 
 int main(){
     Window* main_window = new Window(800, 600);
     main_window->init();
@@ -17,4 +18,12 @@ int main(){
     }
     main_window->close();
     return 0;
+}
+*/
+
+int main(){
+    World w;
+    w.build();
+    w.render_scene();
+    return(0);
 }

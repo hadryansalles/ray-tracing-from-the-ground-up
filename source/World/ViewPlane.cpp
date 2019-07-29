@@ -1,9 +1,5 @@
-// This file contains the definition the ViewPlane class
-
-#include "ViewPlane.h"
-	
-// ---------------------------------------------------------------- default constructor	
-						
+#include "ViewPlane.hpp"
+							
 ViewPlane::ViewPlane(void)							
 	: 	hres(400), 
 		vres(400),
@@ -12,9 +8,6 @@ ViewPlane::ViewPlane(void)
 		inv_gamma(1.0),
 		show_out_of_gamut(false)
 {}
-
-
-// ---------------------------------------------------------------- copy constructor
 
 ViewPlane::ViewPlane(const ViewPlane& vp)   
 	:  	hres(vp.hres),  
@@ -25,11 +18,7 @@ ViewPlane::ViewPlane(const ViewPlane& vp)
 		show_out_of_gamut(vp.show_out_of_gamut)
 {}
 
-
-// ---------------------------------------------------------------- assignment operator
-
-ViewPlane& 
-ViewPlane::operator= (const ViewPlane& rhs) {
+ViewPlane& ViewPlane::operator= (const ViewPlane& rhs) {
 	if (this == &rhs)
 		return (*this);
 		
@@ -43,19 +32,25 @@ ViewPlane::operator= (const ViewPlane& rhs) {
 	return (*this);
 }
 
-
-// -------------------------------------------------------------- destructor
-
 ViewPlane::~ViewPlane(void) {}
 
+void ViewPlane::set_hres(const int h_res) {
+	hres = h_res;
+}
 
+void ViewPlane::set_vres(const int v_res) {
+	vres = v_res;
+}
 
+void ViewPlane::set_pixel_size(const float size) {
+	s = size;
+}
 
+void ViewPlane::set_gamma(const float g) {
+	gamma = g;
+	inv_gamma = 1.0 / gamma;
+}
 
-
-	
-
-
-
-
-
+void ViewPlane::set_gamut_display(const bool show) {
+	show_out_of_gamut = show;
+}

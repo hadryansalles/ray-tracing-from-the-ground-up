@@ -32,8 +32,8 @@ public:
 							
 	void add_object(GeometricObject* object_ptr);
 	
-	void build(void);
-	void render_scene(void) const;
+	void build();
+	void render_scene();
 					
 	RGBColor max_to_one(const RGBColor& c) const;
 	RGBColor clamp_to_color(const RGBColor& c) const;
@@ -42,5 +42,5 @@ public:
 	ShadeRec hit_bare_bones_objects(const Ray& ray);
 					
 private:
-	void delete_objects(void);
+	void delete_objects();
 };
