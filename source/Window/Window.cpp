@@ -17,8 +17,8 @@ void Window::init(){
 	SDL_RenderClear(renderer);
 }
 
-void Window::putPixel(int x, int y, RGBColor color){
-	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
+void Window::setPixel(int x, int y, int r, int g, int b){
+	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
 	SDL_RenderDrawPoint(renderer, x, y);
 	SDL_RenderPresent(renderer);
 }

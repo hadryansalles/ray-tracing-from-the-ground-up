@@ -15,7 +15,7 @@ public:
     ~Window();
 
     void init();
-    void putPixel(int x, int y, RGBColor color);
+    void setPixel(int x, int y, int r, int g, int b);
     bool shouldClose();
     void close();
 };
