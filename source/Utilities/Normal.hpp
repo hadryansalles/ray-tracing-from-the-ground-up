@@ -27,3 +27,9 @@ public:
 	Normal operator* (const double a) const;			// multiplication by a double on the right			
 	void normalize(void); 								// convert normal to a unit normal
 };
+
+Normal operator* (const Matrix& mat, const Normal& n);
+double operator* (const Vector3D& v, const Normal& n);
+Vector3D operator- (const Vector3D&, const Normal& n);
+Vector3D operator+ (const Vector3D& v, const Normal& n);
+Normal operator* (const double a, const Normal& n);
