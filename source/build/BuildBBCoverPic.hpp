@@ -1,7 +1,5 @@
 // This builds the cover image for Chapter 3: Bare Bones Ray Tracing
-/* 
-void 												
-World::build(void) {
+void World::build(void) {
 	vp.set_hres(400);
 	vp.set_vres(400);
 	vp.set_pixel_size(0.5);
@@ -163,5 +161,3 @@ World::build(void) {
 	sphere_ptr35->set_color(light_purple);							// light purple
 	add_object(sphere_ptr35);
 }
-
-*/

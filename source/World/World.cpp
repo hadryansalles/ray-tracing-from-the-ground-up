@@ -17,10 +17,10 @@
 #include "../Utilities/Maths.hpp"
 
 // build functions
-#include "../build/BuildSingleSphere.hpp"
 
-//#include "BuildMultipleObjects.cpp"
-//#include "BuildBBCoverPic.cpp"
+//#include "../build/BuildSingleSphere.hpp"
+#include "../build/BuildBBCoverPic.hpp"
+//#include "../build/BuildMultipleObjects.hpp"
 
 World::World()
 	:  	background_color(black),
@@ -52,14 +52,18 @@ void World::render_scene() {
 	window = new Window(vres, hres);
 	window->init();
 	ray.d = Vector3D(0, 0, -1);
-	
-	for (int r = 0; r < vres && !window->shouldClose(); r++)			// up
-		for (int c = 0; c <= hres && !window->shouldClose(); c++) {		// across 					
+	bool quit = false;
+	for (int r = 0; r < vres && !quit; r++) {			// up
+		for (int c = 0; c <= hres && !quit; c++) {		// across 					
 			ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
 			pixel_color = tracer_ptr->trace_ray(ray);
 			display_pixel(r, c, pixel_color);
+			if(window->shouldClose()){
+				quit = true;
+			}
 		}	
-	while(!window->shouldClose()){ 
+	}
+	while(!quit && !window->shouldClose()){ 
 		// wait 
 	}
 }  

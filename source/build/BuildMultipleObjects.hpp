@@ -1,6 +1,4 @@
-/* 
-void 												
-World::build(void) {
+void World::build(void) {
 	vp.set_hres(200);
 	vp.set_vres(200);
 	vp.set_pixel_size(1.0);
@@ -27,4 +25,3 @@ World::build(void) {
 	plane_ptr->set_color(0.0, 0.3, 0.0);	// dark green
 	add_object(plane_ptr);
 }
-*/
