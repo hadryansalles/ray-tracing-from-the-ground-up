@@ -49,7 +49,7 @@ void World::render_scene() {
 	float		zw		= 100.0;			// hardwired in
 	ray.d = Vector3D(0, 0, -1);
 
-	window = new Window_NOTHREAD(vres, hres);
+	window = new Window_THREAD(vres, hres);
 	window->init();
 
 	struct timespec start_processing;
