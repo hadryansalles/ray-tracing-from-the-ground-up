@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "ViewPlane.hpp"
+#include "../Utilities/Constants.hpp"
 #include "../Utilities/RGBColor.hpp"
 #include "../Tracers/Tracer.hpp"
 #include "../GeometricObjects/GeometricObject.hpp"

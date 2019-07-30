@@ -1,5 +1,4 @@
 #include "World.hpp"
-#include "../Utilities/Constants.hpp"
 
 // geometric objects
 #include "../GeometricObjects/Plane.hpp"
@@ -10,6 +9,7 @@
 
 // utilities
 #include "../Utilities/Vector3D.hpp"
+#include "../Utilities/Point2D.hpp"
 #include "../Utilities/Point3D.hpp"
 #include "../Utilities/Normal.hpp"
 #include "../Utilities/ShadeRec.hpp"
@@ -47,6 +47,9 @@ void World::render_scene() {
 	int 		vres 	= vp.vres;
 	float		s		= vp.s;
 	float		zw		= 100.0;			// hardwired in
+	int n = (int)sqrt((float)vp.num_samples);
+	Point2D pp;
+
 	ray.d = Vector3D(0, 0, -1);
 
 	window = new Window_THREAD(vres, hres);
