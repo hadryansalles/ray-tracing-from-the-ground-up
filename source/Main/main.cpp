@@ -25,5 +25,6 @@ int main(){
     World w;
     w.build();
     w.render_scene();
+    printf("Main thread terminated.\n");
     return(0);
 }

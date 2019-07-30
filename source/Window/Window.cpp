@@ -1,13 +1,14 @@
 #include "Window.hpp"
 
-Window::Window(int width, int height):
-	pixels(width*height*4) {
+Window::Window(int width, int height) :
+	pixels(width*height*4) {	
 	w = width;
 	h = height;
 	running = true;
 }
 
 Window::~Window(){
+	pixels.clear();
 }
 
 void Window::init(){
@@ -23,8 +24,8 @@ void Window::setPixel(int x, int y, int r, int g, int b){
 	pixels[pos+3] = SDL_ALPHA_OPAQUE;
 }
 
-bool Window::shouldClose(){
-	return !running;
+bool Window::isOpen(){
+	return running;
 }
 
 void windowThread(int width, int height, std::vector<unsigned char> *pixels, bool *running){
@@ -45,15 +46,19 @@ void windowThread(int width, int height, std::vector<unsigned char> *pixels, boo
 	clock_t frame_start = clock();
 
 	while(*running){
-		if((double)(clock() - frame_start)/CLOCKS_PER_SEC > 1.0/60.0){
+		if((double)(clock() - frame_start)/CLOCKS_PER_SEC > 1.0/25.0){
 			frame_start = clock();
 			while( SDL_PollEvent( &event ) )
 			{
 				if( ( SDL_QUIT == event.type ) ||
 					( SDL_KEYDOWN == event.type && SDL_SCANCODE_ESCAPE == event.key.keysym.scancode ) )
 				{
-					(*running) = false;
-					break;
+					SDL_DestroyRenderer(renderer);
+					SDL_DestroyWindow(window);
+					SDL_Quit();	
+					printf("Window thread terminated.\n");
+					*running = false;
+					return;
 				}
 			}
 			SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
@@ -63,7 +68,4 @@ void windowThread(int width, int height, std::vector<unsigned char> *pixels, boo
 			SDL_RenderPresent(renderer);
 		}
 	}
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
-	SDL_Quit();
 }

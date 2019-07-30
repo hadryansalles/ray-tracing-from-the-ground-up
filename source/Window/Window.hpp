@@ -20,7 +20,7 @@ public:
     void init();
     void setPixel(int x, int y, int r, int g, int b);
     void updateVideo();
-    bool shouldClose();
+    bool isOpen();
 };
 
 void windowThread(int width, int height, std::vector<unsigned char> *pixels, bool *running);

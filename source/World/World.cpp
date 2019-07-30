@@ -6,7 +6,6 @@
 #include "../GeometricObjects/Sphere.hpp"
 
 // tracers
-#include "../Tracers/SingleSphere.hpp"
 #include "../Tracers/MultipleObjects.hpp"
 
 // utilities
@@ -52,18 +51,21 @@ void World::render_scene() {
 	window->init();
 	ray.d = Vector3D(0, 0, -1);
 	bool quit = false;
-	for (int r = 0; r < vres && !quit; r++) {			// up
-		for (int c = 0; c <= hres && !quit; c++) {		// across 					
+	clock_t start = clock();
+	for (int r = 0; r < vres; r++) {			// up
+		for (int c = 0; c <= hres; c++) {		// across 					
+			//printf("\rRendering time: %ld", (clock() - start)*1000/CLOCKS_PER_SEC);
 			ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
 			pixel_color = tracer_ptr->trace_ray(ray);
 			display_pixel(r, c, pixel_color);
-			if(window->shouldClose()){
-				quit = true;
+			if(!window->isOpen()){
+				return;
 			}
 		}	
 	}
-	while(!quit && !window->shouldClose()){
-
+	printf("\rRendering completed. Total time: %ld milliseconds.\n", (clock() - start)*1000/CLOCKS_PER_SEC);
+	while(window->isOpen()){
+		// waiting 
 	}
 }  
 

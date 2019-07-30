@@ -22,7 +22,6 @@ public:
 	ViewPlane vp;
 	RGBColor background_color;
 	Tracer* tracer_ptr;
-	Sphere sphere;							// for Chapter 3 only
 	std::vector<GeometricObject*> objects;		
 	Window* window;
 		
