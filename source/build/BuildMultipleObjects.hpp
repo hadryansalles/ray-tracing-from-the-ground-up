@@ -1,11 +1,11 @@
 void World::build(void) {
-	vp.set_hres(200);
-	vp.set_vres(200);
+	vp.set_hres(300);
+	vp.set_vres(300);
 	vp.set_pixel_size(1.0);
 	
 	tracer_ptr = new MultipleObjects(this); 
 	
-	background_color = RGBColor(black);
+	background_color = RGBColor(0);
 	
 	// use access functions to set centre and radius
 	
