@@ -6,6 +6,7 @@
 
 // tracers
 #include "../Tracers/MultipleObjects.hpp"
+#include "../Tracers/Sinusoid.hpp"
 
 // utilities
 #include "../Utilities/Vector3D.hpp"
@@ -17,9 +18,10 @@
 
 // build functions
 
-#include "../build/BuildSingleSphere.hpp"
+//#include "../build/BuildSingleSphere.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildMultipleObjects.hpp"
+#include "../build/BuildSinusoid.hpp"
 
 World::World()
 	:  	background_color(black),
@@ -67,7 +69,7 @@ void World::render_scene() {
 		for (int c = 0; c <= hres; c++) {		// across 					
 
 			// PROCESSING STUFF			
-				// ANTIALIASING
+				// ANTIALIASING REGULAR 
 				pixel_color = black;
 				for(int p = 0; p < n; p++){
 					for(int q = 0; q < n; q++){
