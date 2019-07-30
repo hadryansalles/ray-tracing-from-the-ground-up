@@ -2,12 +2,10 @@
 
 #include <SDL2/SDL.h>
 #include <time.h>
-#include <stdio.h>
 #include <vector>
-#include <thread>
 
 class Window{
-private:
+protected:
     int w;
     int h;
     bool running;
@@ -15,12 +13,10 @@ private:
     
 public:
     Window(int width, int height);
-    ~Window();
+    virtual ~Window();
 
-    void init();
+    virtual void init() = 0;
+    virtual void update();
     void setPixel(int x, int y, int r, int g, int b);
-    void updateVideo();
     bool isOpen();
 };
-
-void windowThread(int width, int height, std::vector<unsigned char> *pixels, bool *running);

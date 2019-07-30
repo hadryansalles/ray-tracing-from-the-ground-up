@@ -15,7 +15,8 @@
 #include "../GeometricObjects/GeometricObject.hpp"
 #include "../GeometricObjects/Sphere.hpp"
 #include "../Utilities/Ray.hpp"
-#include "../Window/Window.hpp"
+#include "../Window/Window-THREAD.hpp"
+#include "../Window/Window-NOTHREAD.hpp"
 
 class World {	
 public:

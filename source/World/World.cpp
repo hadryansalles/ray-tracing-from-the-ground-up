@@ -47,25 +47,42 @@ void World::render_scene() {
 	int 		vres 	= vp.vres;
 	float		s		= vp.s;
 	float		zw		= 100.0;			// hardwired in
-	window = new Window(vres, hres);
-	window->init();
 	ray.d = Vector3D(0, 0, -1);
-	bool quit = false;
-	clock_t start = clock();
+
+	window = new Window_NOTHREAD(vres, hres);
+	window->init();
+
+	struct timespec start_processing;
+	struct timespec start_displaying;
+	struct timespec now;
+
+	clock_gettime(CLOCK_MONOTONIC, &start_processing);
+
+	float time_displaying = 0;
+	
 	for (int r = 0; r < vres; r++) {			// up
 		for (int c = 0; c <= hres; c++) {		// across 					
-			//printf("\rRendering time: %ld", (clock() - start)*1000/CLOCKS_PER_SEC);
 			ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
 			pixel_color = tracer_ptr->trace_ray(ray);
+
+			clock_gettime(CLOCK_MONOTONIC, &start_displaying); 			
+			//printf("\rRendering time: %.4f", start_displaying.tv_sec - start_processing.tv_sec + 
+			//	((start_displaying.tv_nsec - start_processing.tv_nsec)/1000000000.0));
+			
 			display_pixel(r, c, pixel_color);
+			window->update();
 			if(!window->isOpen()){
 				return;
 			}
+			clock_gettime(CLOCK_MONOTONIC, &now); 			
+			time_displaying += (now.tv_sec - start_displaying.tv_sec);
+			time_displaying += (now.tv_nsec - start_displaying.tv_nsec)/1000000000.0;
 		}	
 	}
-	printf("\rRendering completed. Total time: %ld milliseconds.\n", (clock() - start)*1000/CLOCKS_PER_SEC);
+	printf("\r\nRendering completed.\nTotal processing time: %.4f seconds.\nTotal displaying time: %.4f seconds.\n", 
+		(now.tv_sec - start_processing.tv_sec)+((now.tv_nsec - start_processing.tv_nsec)/1000000000.0) - time_displaying, time_displaying);
 	while(window->isOpen()){
-		// waiting 
+		window->update();
 	}
 }  
 
