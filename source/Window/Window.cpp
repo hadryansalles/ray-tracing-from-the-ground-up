@@ -4,7 +4,7 @@ Window::Window(int width, int height) :
 	pixels(width*height*4) {	
 	w = width;
 	h = height;
-	running = true;
+	running = false;
 }
 
 Window::~Window(){
@@ -13,6 +13,7 @@ Window::~Window(){
 
 void Window::init(){
 	std::thread video(windowThread, w, h, &pixels, &running);
+	running = true;
 	video.detach();
 }
 
