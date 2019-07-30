@@ -68,17 +68,28 @@ void World::render_scene() {
 	for (int r = 0; r < vres; r++) {			// up
 		for (int c = 0; c <= hres; c++) {		// across 					
 
-			// PROCESSING STUFF			
-				// ANTIALIASING REGULAR 
+			// PROCESSING STUFF		
+
 				pixel_color = black;
+				
+				/* REGULAR SAMPLING 
 				for(int p = 0; p < n; p++){
 					for(int q = 0; q < n; q++){
-						pp.x = s * (c - 0.5 * hres + (q + 0.5) / n);
-						pp.y = s * (r - 0.5 * vres + (p + 0.5) / n);
+						pp.x = s * (c - (0.5 * hres) + (q + 0.5)/n);
+						pp.y = s * (r - (0.5 * vres) + (p + 0.5)/n);
 						ray.o = Point3D(pp.x, pp.y, zw);
 						pixel_color += tracer_ptr->trace_ray(ray);
 					}
+				}*/
+				
+				/* RANDOM SAMPLING */
+				for(int p = 0; p < vp.num_samples; p++){
+					pp.x = s * (c - (0.5 * hres) + rand_float());
+					pp.y = s * (r - (0.5 * vres) + rand_float());
+					ray.o = Point3D(pp.x, pp.y, zw);
+					pixel_color += tracer_ptr->trace_ray(ray);	
 				}
+
 				pixel_color /= vp.num_samples;
 
 			// DISPLAYING STUFF
