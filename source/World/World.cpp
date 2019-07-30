@@ -17,9 +17,9 @@
 
 // build functions
 
-//#include "../build/BuildSingleSphere.hpp"
+#include "../build/BuildSingleSphere.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
-#include "../build/BuildMultipleObjects.hpp"
+//#include "../build/BuildMultipleObjects.hpp"
 
 World::World()
 	:  	background_color(black),
@@ -65,12 +65,22 @@ void World::render_scene() {
 	
 	for (int r = 0; r < vres; r++) {			// up
 		for (int c = 0; c <= hres; c++) {		// across 					
-			ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
-			pixel_color = tracer_ptr->trace_ray(ray);
-			
+
+			// PROCESSING STUFF			
+				// ANTIALIASING
+				pixel_color = black;
+				for(int p = 0; p < n; p++){
+					for(int q = 0; q < n; q++){
+						pp.x = s * (c - 0.5 * hres + (q + 0.5) / n);
+						pp.y = s * (r - 0.5 * vres + (p + 0.5) / n);
+						ray.o = Point3D(pp.x, pp.y, zw);
+						pixel_color += tracer_ptr->trace_ray(ray);
+					}
+				}
+				pixel_color /= vp.num_samples;
+
+			// DISPLAYING STUFF
 			clock_gettime(CLOCK_MONOTONIC, &start_displaying); 			
-
-
 			display_pixel(r, c, pixel_color);
 			window->update();
 			if(!window->isOpen()){

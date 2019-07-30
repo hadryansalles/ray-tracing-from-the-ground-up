@@ -7,7 +7,7 @@ ViewPlane::ViewPlane(void)
 		gamma(1.0),
 		inv_gamma(1.0),
 		show_out_of_gamut(false),
-		num_samples(0)
+		num_samples(1)
 {}
 
 ViewPlane::ViewPlane(const ViewPlane& vp)   
