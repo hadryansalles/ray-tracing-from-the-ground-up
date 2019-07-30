@@ -68,11 +68,13 @@ void World::render_scene() {
 	for (int r = 0; r < vres; r++) {			// up
 		for (int c = 0; c <= hres; c++) {		// across 					
 
-			// PROCESSING STUFF		
-
+			// PROCESSING STUFF	
+			ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
+			pixel_color = tracer_ptr->trace_ray(ray);
+		
+			/* ANTIALIASING
 				pixel_color = black;
-				
-				/* REGULAR SAMPLING 
+				REGULAR SAMPLING
 				for(int p = 0; p < n; p++){
 					for(int q = 0; q < n; q++){
 						pp.x = s * (c - (0.5 * hres) + (q + 0.5)/n);
@@ -81,18 +83,14 @@ void World::render_scene() {
 						pixel_color += tracer_ptr->trace_ray(ray);
 					}
 				}
-				*/
-				
-				/* RANDOM SAMPLING 
+				RANDOM SAMPLING 
 				for(int p = 0; p < vp.num_samples; p++){
 					pp.x = s * (c - (0.5 * hres) + rand_float());
 					pp.y = s * (r - (0.5 * vres) + rand_float());
 					ray.o = Point3D(pp.x, pp.y, zw);
 					pixel_color += tracer_ptr->trace_ray(ray);	
 				}
-				*/
-
-				/* JITTERED SAMPLING */
+				JITTERED SAMPLING 
 				for(int p = 0; p < n; p++){
 					for(int q = 0; q < n; q++){
 						pp.x = s * (c - (0.5 * hres) + (q + rand_float())/n);
@@ -101,9 +99,9 @@ void World::render_scene() {
 						pixel_color += tracer_ptr->trace_ray(ray);
 					}
 				}
-
 				pixel_color /= vp.num_samples;
-
+			*/
+				
 			// DISPLAYING STUFF
 			clock_gettime(CLOCK_MONOTONIC, &start_displaying); 			
 			display_pixel(r, c, pixel_color);
