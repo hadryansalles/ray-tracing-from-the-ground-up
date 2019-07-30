@@ -64,11 +64,10 @@ void World::render_scene() {
 		for (int c = 0; c <= hres; c++) {		// across 					
 			ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
 			pixel_color = tracer_ptr->trace_ray(ray);
-
-			clock_gettime(CLOCK_MONOTONIC, &start_displaying); 			
-			//printf("\rRendering time: %.4f", start_displaying.tv_sec - start_processing.tv_sec + 
-			//	((start_displaying.tv_nsec - start_processing.tv_nsec)/1000000000.0));
 			
+			clock_gettime(CLOCK_MONOTONIC, &start_displaying); 			
+
+
 			display_pixel(r, c, pixel_color);
 			window->update();
 			if(!window->isOpen()){
