@@ -22,10 +22,10 @@
 // build functions
 
 //#include "../build/BuildSingleSphere.hpp"
-//#include "../build/BuildBBCoverPic.hpp"
+#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildMultipleObjects.hpp"
 //#include "../build/BuildSinusoid.hpp"
-#include "../build/BuildHorizontalPlane.hpp"
+//#include "../build/BuildHorizontalPlane.hpp"
 
 World::World()
 	:  	background_color(black),
