@@ -11,6 +11,14 @@ Camera::Camera(Point3D eye_p, Point3D lookat):
 Camera::~Camera()
 {}
 
+void Camera::compute_uvw(){
+    w = eye - look_at;
+    w.normalize();
+    u = up ^ w;
+    u.normalize();
+    v = w ^ u;
+}
+
 void Camera::set_eye(const Point3D eye_p){
     eye = eye_p;
 }
