@@ -17,7 +17,7 @@ void World::build(void) {
 
 	// use constructor to set centre and radius 
 	
-	sphere_ptr = new Sphere(Point3D(0, 30, 0), 60);
+	sphere_ptr = new Sphere(Point3D(0, 30, 0), 400);
 	sphere_ptr->set_color(1, 1, 0);	// yellow
 	add_object(sphere_ptr);
 	
