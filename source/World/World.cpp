@@ -21,7 +21,8 @@
 //#include "../build/BuildSingleSphere.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildMultipleObjects.hpp"
-#include "../build/BuildSinusoid.hpp"
+//#include "../build/BuildSinusoid.hpp"
+#include "../build/BuildHorizontalPlane.hpp"
 
 World::World()
 	:  	background_color(black),
@@ -45,12 +46,11 @@ World::~World() {
 void World::render_scene() {
 	RGBColor	pixel_color;	 	
 	Ray			ray;					
-	float		zw		= 100.0;			// hardwired in
+	float		zw		= 0.0;			// hardwired in
 	vp.sampler_ptr->generate_samples();
 
 	Point2D sp; // sample point in a square
 	Point2D pp; // sample point pixel
-
 	ray.d = Vector3D(0, 0, -1);
 
 	window = new Window_THREAD(vp.vres, vp.hres);
@@ -74,7 +74,7 @@ void World::render_scene() {
 				sp = vp.sampler_ptr->sample_unit_square();
 				pp.x = vp.s*(c - 0.5*vp.hres + sp.x);
 				pp.y = vp.s*(r - 0.5*vp.vres + sp.y);
-				ray.o = Point3D(pp.x, pp.y, zw);
+				ray.o = Point3D(pp.x, pp.y, -zw);
 				pixel_color += tracer_ptr->trace_ray(ray);
 			}
 			pixel_color /= vp.num_samples;
