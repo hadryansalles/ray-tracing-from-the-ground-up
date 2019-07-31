@@ -8,6 +8,9 @@
 #include "../Tracers/MultipleObjects.hpp"
 #include "../Tracers/Sinusoid.hpp"
 
+// Cameras
+#include "../Cameras/Pinhole.hpp"
+
 // utilities
 #include "../Utilities/Vector3D.hpp"
 #include "../Utilities/Point2D.hpp"
@@ -27,7 +30,8 @@
 World::World()
 	:  	background_color(black),
 		tracer_ptr(NULL),
-		window(NULL)
+		window(NULL),
+		camera(NULL)
 {}
 
 World::~World() {		
@@ -39,7 +43,11 @@ World::~World() {
 		delete window;
 		window = NULL;
 	}
-	delete_objects();	
+	if(camera){
+		delete camera;
+		camera = NULL;
+	}
+	delete_objects();
 }
 
 // This uses orthographic viewing along the zw axis
@@ -53,8 +61,7 @@ void World::render_scene() {
 	Point2D pp; // sample point pixel
 	ray.d = Vector3D(0, 0, -1);
 
-	window = new Window_THREAD(vp.vres, vp.hres);
-	window->init();
+	openWindow(vp.vres, vp.hres);
 
 	// TIME MANAGER
 	struct timespec start_processing;
@@ -178,4 +185,14 @@ void World::delete_objects() {
 
 void World::add_object(GeometricObject* object_ptr) {  
 	objects.push_back(object_ptr);	
+}
+
+void World::openWindow(int w, int h, bool thread) {
+	if(thread){
+		window = new Window_THREAD(w, h);
+	}
+	else{
+		window = new Window_NOTHREAD(w, h);
+	}
+	window->init();
 }

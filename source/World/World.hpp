@@ -18,6 +18,7 @@
 #include "../Utilities/Ray.hpp"
 #include "../Window/Window-THREAD.hpp"
 #include "../Window/Window-NOTHREAD.hpp"
+#include "../Cameras/Camera.hpp"
 
 class World {	
 public:
@@ -26,6 +27,7 @@ public:
 	Tracer* tracer_ptr;
 	std::vector<GeometricObject*> objects;		
 	Window* window;
+	Camera* camera;
 		
 public:
 	World();												
@@ -41,6 +43,8 @@ public:
 	
 	void display_pixel(const int row, const int column, const RGBColor& pixel_color) const;
 	ShadeRec hit_bare_bones_objects(const Ray& ray);
+
+	void openWindow(int w, int h, bool thread = true);
 					
 private:
 	void delete_objects();
