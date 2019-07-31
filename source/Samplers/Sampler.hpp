@@ -15,8 +15,9 @@ public:
     int get_num_sets();
     void set_num_sets(int sets);
 
-    Point2D Sampler::sample_unit_square();
-
+    Point2D sample_unit_square();
+    virtual void generate_samples() = 0;
+    
 protected:
     int num_samples;
     int num_sets;
@@ -24,6 +25,4 @@ protected:
     int jump;
 
     std::vector<Point2D> samples;
-
-    virtual void generate_samples() = 0;
 };
