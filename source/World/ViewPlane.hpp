@@ -1,7 +1,10 @@
 #pragma once
 
+#include "../Samplers/Regular.hpp"
+#include "../Samplers/Jittered.hpp"
+
 class ViewPlane {
-public:
+private:
 	int hres;   									// horizontal image resolution 
 	int vres;   									// vertical image resolution
 	float s;										// pixel size
@@ -11,6 +14,7 @@ public:
 	bool show_out_of_gamut;							// display red if RGBColor out of gamut								
 
 	int num_samples;
+	Sampler* sampler_ptr;
 
 public:
 	ViewPlane();   									// default Constructor
@@ -22,6 +26,7 @@ public:
 	void set_vres(const int v_res);
 	void set_pixel_size(const float size);
 	void set_num_samples(const int num_samples);
+	void set_sampler(Sampler* sampler_p);
 	void set_gamma(const float g);
 	void set_gamut_display(const bool show);				
 };
