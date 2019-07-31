@@ -3,7 +3,7 @@ void World::build(void) {
 	vp.set_hres(1000);
 	vp.set_vres(1000);
 	vp.set_pixel_size(0.3);
-	
+	vp.set_sampler(new Jittered(25));
 	background_color = RGBColor(1);
 	tracer_ptr = new MultipleObjects(this);  
 	
