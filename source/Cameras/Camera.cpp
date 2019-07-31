@@ -22,7 +22,7 @@ void Camera::compute_uvw(){
 void Camera::set_eye(const Point3D eye_p){
     eye = eye_p;
 }
-const Point3D Camera::get_eye() const{
+Point3D Camera::get_eye() const{
     return eye;
 }
 
@@ -30,7 +30,7 @@ void Camera::set_lookat(const Point3D lookat){
     look_at = lookat;
 }
 
-const Point3D Camera::get_lookat() const{
+Point3D Camera::get_lookat() const{
     return look_at;
 }
 
@@ -38,7 +38,7 @@ void Camera::set_up(const Vector3D up_d){
     up = up_d;
 }
 
-const Vector3D Camera::get_up() const{
+Vector3D Camera::get_up() const{
     return up;
 }
 
@@ -46,6 +46,6 @@ void Camera::set_exposure_time(const float exposure_t){
     exposure_time = exposure_t;
 }
 
-const float Camera::get_exposure_time() const{
+float Camera::get_exposure_time() const{
     return exposure_time;
 }
