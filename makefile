@@ -4,7 +4,8 @@ FLAGS =	-W -Wall -ansi -pedantic
 LINKS = -lSDL2 -lpthread -pthread -std=c++11
 RM = rm -rf
 
-SOURCE = 	$(wildcard ./source/GeometricObjects/*.cpp) \
+SOURCE = 	$(wildcard ./source/Cameras/*.cpp) \
+			$(wildcard ./source/GeometricObjects/*.cpp) \
 			$(wildcard ./source/Main/*.cpp) \
 			$(wildcard ./source/Samplers/*.cpp) \
 			$(wildcard ./source/Tracers/*.cpp) \
