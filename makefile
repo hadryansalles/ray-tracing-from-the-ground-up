@@ -6,6 +6,7 @@ RM = rm -rf
 
 SOURCE = 	$(wildcard ./source/GeometricObjects/*.cpp) \
 			$(wildcard ./source/Main/*.cpp) \
+			$(wildcard ./source/Samplers/*.cpp) \
 			$(wildcard ./source/Tracers/*.cpp) \
 			$(wildcard ./source/Utilities/*.cpp) \
 			$(wildcard ./source/Window/*.cpp) \

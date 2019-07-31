@@ -7,8 +7,8 @@ ViewPlane::ViewPlane(void)
 		gamma(1.0),
 		inv_gamma(1.0),
 		show_out_of_gamut(false),
-		num_samples(1),
-		sampler_ptr(new Regular())
+		sampler_ptr(new Regular()),
+		num_samples(1)
 {}
 
 ViewPlane::ViewPlane(const ViewPlane& vp)   
@@ -18,8 +18,8 @@ ViewPlane::ViewPlane(const ViewPlane& vp)
 		gamma(vp.gamma),
 		inv_gamma(vp.inv_gamma),
 		show_out_of_gamut(vp.show_out_of_gamut),
-		num_samples(vp.num_samples),
-		sampler_ptr(vp.sampler_ptr)
+		sampler_ptr(vp.sampler_ptr),
+		num_samples(vp.num_samples)
 {}
 
 ViewPlane& ViewPlane::operator= (const ViewPlane& rhs) {
@@ -53,11 +53,11 @@ void ViewPlane::set_vres(const int v_res) {
 	vres = v_res;
 }
 
-void ViewPlane::set_num_samples(const int num_samples){
-	if(num_samples != 1){
+void ViewPlane::set_num_samples(const int samples){
+	if(samples != 1){
 		delete sampler_ptr;
-		sampler_ptr = new Jittered(num_samples);
-		this->num_samples = num_samples;
+		sampler_ptr = new Jittered(samples);
+		this->num_samples = samples;
 	}
 }
 

@@ -3,7 +3,7 @@ void World::build(void) {
 	vp.set_vres(800);
 	vp.set_pixel_size(.020);
 	vp.set_gamma(1.0);
-	vp.set_num_samples(1);
+	vp.set_sampler(new Jittered(25));
 	
 	background_color = black;
 	tracer_ptr = new Sinusoid(this);

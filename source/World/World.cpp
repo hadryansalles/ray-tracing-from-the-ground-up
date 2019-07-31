@@ -45,65 +45,43 @@ World::~World() {
 void World::render_scene() {
 	RGBColor	pixel_color;	 	
 	Ray			ray;					
-	int 		hres 	= vp.hres;
-	int 		vres 	= vp.vres;
-	float		s		= vp.s;
 	float		zw		= 100.0;			// hardwired in
-	int n = (int)sqrt((float)vp.num_samples);
-	Point2D pp;
+	vp.sampler_ptr->generate_samples();
+
+	Point2D sp; // sample point in a square
+	Point2D pp; // sample point pixel
 
 	ray.d = Vector3D(0, 0, -1);
 
-	window = new Window_THREAD(vres, hres);
+	window = new Window_THREAD(vp.vres, vp.hres);
 	window->init();
 
+	// TIME MANAGER
 	struct timespec start_processing;
 	struct timespec start_displaying;
 	struct timespec now;
-
 	clock_gettime(CLOCK_MONOTONIC, &start_processing);
 
 	float time_displaying = 0;
 	
-	for (int r = 0; r < vres; r++) {			// up
-		for (int c = 0; c <= hres; c++) {		// across 					
+	for (int r = 0; r < vp.vres; r++) {			// up
+		for (int c = 0; c <= vp.hres; c++) {		// across 					
 
 			// PROCESSING STUFF	
-			ray.o = Point3D(s * (c - hres / 2.0 + 0.5), s * (r - vres / 2.0 + 0.5), zw);
-			pixel_color = tracer_ptr->trace_ray(ray);
-		
-			/* ANTIALIASING
-				pixel_color = black;
-				REGULAR SAMPLING
-				for(int p = 0; p < n; p++){
-					for(int q = 0; q < n; q++){
-						pp.x = s * (c - (0.5 * hres) + (q + 0.5)/n);
-						pp.y = s * (r - (0.5 * vres) + (p + 0.5)/n);
-						ray.o = Point3D(pp.x, pp.y, zw);
-						pixel_color += tracer_ptr->trace_ray(ray);
-					}
-				}
-				RANDOM SAMPLING 
-				for(int p = 0; p < vp.num_samples; p++){
-					pp.x = s * (c - (0.5 * hres) + rand_float());
-					pp.y = s * (r - (0.5 * vres) + rand_float());
-					ray.o = Point3D(pp.x, pp.y, zw);
-					pixel_color += tracer_ptr->trace_ray(ray);	
-				}
-				JITTERED SAMPLING 
-				for(int p = 0; p < n; p++){
-					for(int q = 0; q < n; q++){
-						pp.x = s * (c - (0.5 * hres) + (q + rand_float())/n);
-						pp.y = s * (r - (0.5 * vres) + (p + rand_float())/n);
-						ray.o = Point3D(pp.x, pp.y, zw);
-						pixel_color += tracer_ptr->trace_ray(ray);
-					}
-				}
-				pixel_color /= vp.num_samples;
-			*/
+			// ANTI ALIASING
+			pixel_color = black;
+			for(int j = 0; j < vp.num_samples; j++) {
+				sp = vp.sampler_ptr->sample_unit_square();
+				pp.x = vp.s*(c - 0.5*vp.hres + sp.x);
+				pp.y = vp.s*(r - 0.5*vp.vres + sp.y);
+				ray.o = Point3D(pp.x, pp.y, zw);
+				pixel_color += tracer_ptr->trace_ray(ray);
+			}
+			pixel_color /= vp.num_samples;
 				
-			// DISPLAYING STUFF
 			clock_gettime(CLOCK_MONOTONIC, &start_displaying); 			
+			
+			// DISPLAYING STUFF
 			display_pixel(r, c, pixel_color);
 			window->update();
 			if(!window->isOpen()){
