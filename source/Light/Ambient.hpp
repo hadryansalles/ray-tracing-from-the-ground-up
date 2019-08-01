@@ -13,10 +13,10 @@ public:
     RGBColor get_color() const;
     void set_color(const RGBColor color_);
 
-    Vector3D get_direction(ShadeRec& sr);
-    RGBColor L(ShadeRec& sr);
+    virtual Vector3D get_direction(ShadeRec& sr);
+    virtual RGBColor L(ShadeRec& sr);
 
-private:
+protected:
     float ls;
     RGBColor color;
 };
