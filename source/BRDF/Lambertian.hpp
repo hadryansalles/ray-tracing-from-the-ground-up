@@ -1,3 +1,5 @@
+#pragma once
+
 #include "BRDF.hpp"
 
 class Lambertian : public BRDF{

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../Samplers/Sampler.hpp"
 #include "../Utilities/ShadeRec.hpp"
 

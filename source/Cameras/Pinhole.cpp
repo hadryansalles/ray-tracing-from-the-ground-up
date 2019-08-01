@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Pinhole.hpp"
 #include "../World/World.hpp"
 
