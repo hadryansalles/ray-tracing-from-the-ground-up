@@ -1,15 +1,15 @@
 // This builds the cover image for Chapter 3: Bare Bones Ray Tracing
 void World::build(void) {
-	vp.set_hres(800);
-	vp.set_vres(800);
+	vp.set_hres(1000);
+	vp.set_vres(1000);
 	vp.set_pixel_size(0.3);
 	vp.set_sampler(new Jittered(1));
 	background_color = RGBColor(1);
 	tracer_ptr = new MultipleObjects(this);
 
-	Pinhole* pinhole_ptr = new Pinhole(Point3D(0, 50, 100), Point3D(0, 0, -500));
+	Pinhole* pinhole_ptr = new Pinhole(Point3D(50, 0, 100), Point3D(-10, 0, -10));
 	pinhole_ptr->set_distance(100);
-	pinhole_ptr->set_up(Vector3D(1, 1, 0));
+	pinhole_ptr->set_up(Vector3D(0, 1, 0));
 	pinhole_ptr->compute_uvw();
 	camera = pinhole_ptr;
 
