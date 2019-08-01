@@ -76,13 +76,13 @@ void World::display_pixel(const int row, const int column, const RGBColor& raw_c
                           (int)(mapped_color.b * 255));
 }
 
-ShadeRec World::hit_objects(const Ray& ray) {
+ShadeRec World::hit_objects(const Ray& ray, const float tmin_) {
 	ShadeRec sr(*this); 
 	Normal normal;
 	Point3D local_hit_point; 			
 	
 	float t;
-	float tmin = kHugeValue;
+	float tmin = tmin_;
 	int num_objects = objects.size();
 	
 	for (int j = 0; j < num_objects; j++) {
