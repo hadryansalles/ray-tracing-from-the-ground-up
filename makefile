@@ -7,7 +7,9 @@ RM = rm -rf
 SOURCE = 	$(wildcard ./source/BRDF/*.cpp) \
 			$(wildcard ./source/Cameras/*.cpp) \
 			$(wildcard ./source/GeometricObjects/*.cpp) \
+			$(wildcard ./source/Light/*.cpp) \
 			$(wildcard ./source/Main/*.cpp) \
+			$(wildcard ./source/Materials/*.cpp) \
 			$(wildcard ./source/Samplers/*.cpp) \
 			$(wildcard ./source/Tracers/*.cpp) \
 			$(wildcard ./source/Utilities/*.cpp) \

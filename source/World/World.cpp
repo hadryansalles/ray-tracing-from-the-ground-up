@@ -1,5 +1,54 @@
 #include "World.hpp"
 
+// Window
+#include "../Window/Window-THREAD.hpp"
+#include "../Window/Window-NOTHREAD.hpp"
+
+// geometric objects
+#include "../GeometricObjects/GeometricObject.hpp"
+#include "../GeometricObjects/Plane.hpp"
+#include "../GeometricObjects/Sphere.hpp"
+
+// Lights
+#include "../Light/Light.hpp"
+#include "../Light/Ambient.hpp"
+#include "../Light/PointLight.hpp"
+
+// tracers
+#include "../Tracers/Tracer.hpp"
+#include "../Tracers/MultipleObjects.hpp"
+#include "../Tracers/Sinusoid.hpp"
+#include "../Tracers/RayCast.hpp"
+
+// Cameras
+#include "../Cameras/Camera.hpp"
+#include "../Cameras/Pinhole.hpp"
+#include "../Cameras/Orthographic.hpp"
+#include "../Cameras/ThinLens.hpp"
+
+// Materials
+#include "../Materials/Matte.hpp"
+
+// utilities
+#include "../Utilities/Ray.hpp"
+#include "../Utilities/Vector3D.hpp"
+#include "../Utilities/Point2D.hpp"
+#include "../Utilities/Point3D.hpp"
+#include "../Utilities/Normal.hpp"
+#include "../Utilities/ShadeRec.hpp"
+#include "../Utilities/Maths.hpp"
+#include "../Utilities/Constants.hpp"
+#include "../Utilities/RGBColor.hpp"
+
+// build functions
+//#include "../build/BuildSingleSphere.hpp"
+//#include "../build/BuildSpheresQueue.hpp"
+//#include "../build/BuildBBCoverPic.hpp"
+#include "../build/BuildBBCoverPicLight.hpp"
+//#include "../build/BuildMultipleObjects.hpp"
+//#include "../build/BuildSinusoid.hpp"
+//#include "../build/BuildHorizontalPlane.hpp"
+
 World::World()
 	:  	background_color(black),
 		tracer_ptr(NULL),

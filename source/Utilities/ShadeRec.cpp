@@ -1,4 +1,5 @@
 #include "ShadeRec.hpp"
+#include "../Materials/Material.hpp"
 
 // there is no default constructor as the World reference always has to be initialised
 // there is also no assignment operator as we don't want to assign the world

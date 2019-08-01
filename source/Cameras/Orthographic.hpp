@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Camera.hpp"
 
 class Orthographic : public Camera{

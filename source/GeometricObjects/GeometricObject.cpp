@@ -18,3 +18,11 @@ GeometricObject& GeometricObject::operator= (const GeometricObject& rhs) {
 }
 
 GeometricObject::~GeometricObject (void) {}
+
+void GeometricObject::set_material(Material* material){
+	material_ptr = material;
+}
+
+Material* GeometricObject::get_material() const{
+	return material_ptr;
+}

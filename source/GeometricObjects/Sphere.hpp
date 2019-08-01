@@ -23,5 +23,5 @@ public:
 	void set_center(const double x, const double y, const double z);
 	void set_radius(const double r);
 		
-	virtual bool hit(const Ray& ray, double& t, ShadeRec& s) const;	
+	virtual bool hit(const Ray& ray, float& t, ShadeRec& sr) const;	
 };

@@ -14,15 +14,20 @@ public:
 	virtual GeometricObject* clone(void) const = 0;		// virtual copy constructor
 	virtual ~GeometricObject ();						// destructor
 		
-	virtual bool hit(const Ray& ray, double& t, ShadeRec& s) const = 0; 												 
+	virtual bool hit(const Ray& ray, float& t, ShadeRec& s) const = 0; 												 
 
 	// the following three functions are only required for Chapter 3
 	void set_color(const RGBColor& c);		
 	void set_color(const float r, const float g, const float b);
 	RGBColor get_color(void);
 
+	void set_material(Material* material);
+	Material* get_material() const;
+
+
 protected:
 	RGBColor color;
+	Material* material_ptr;
 	GeometricObject& operator= (const GeometricObject& rhs);
 };
 

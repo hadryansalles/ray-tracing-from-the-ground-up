@@ -22,17 +22,22 @@
 // Lights
 #include "../Light/Light.hpp"
 #include "../Light/Ambient.hpp"
+#include "../Light/PointLight.hpp"
 
 // tracers
 #include "../Tracers/Tracer.hpp"
 #include "../Tracers/MultipleObjects.hpp"
 #include "../Tracers/Sinusoid.hpp"
+#include "../Tracers/RayCast.hpp"
 
 // Cameras
 #include "../Cameras/Camera.hpp"
 #include "../Cameras/Pinhole.hpp"
 #include "../Cameras/Orthographic.hpp"
 #include "../Cameras/ThinLens.hpp"
+
+// Materials
+#include "../Materials/Matte.hpp"
 
 // utilities
 #include "../Utilities/Ray.hpp"
@@ -48,7 +53,8 @@
 // build functions
 //#include "../build/BuildSingleSphere.hpp"
 //#include "../build/BuildSpheresQueue.hpp"
-#include "../build/BuildBBCoverPic.hpp"
+//#include "../build/BuildBBCoverPic.hpp"
+#include "../build/BuildBBCoverPicLight.hpp"
 //#include "../build/BuildMultipleObjects.hpp"
 //#include "../build/BuildSinusoid.hpp"
 //#include "../build/BuildHorizontalPlane.hpp"
@@ -80,7 +86,7 @@ public:
 	RGBColor clamp_to_color(const RGBColor& c) const;
 	
 	void display_pixel(const int row, const int column, const RGBColor& pixel_color) const;
-	ShadeRec hit_objects(const Ray& ray, const float tmin_ = kHugeValue) const;
+	ShadeRec hit_objects(const Ray& ray, const float tmin_ = kHugeValue);
 
 	void openWindow(int w, int h, bool thread = true);
 					

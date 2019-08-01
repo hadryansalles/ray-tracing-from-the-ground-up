@@ -4,8 +4,9 @@
 #include "Normal.hpp"
 #include "RGBColor.hpp"
 #include "Constants.hpp"
-#include "../Material/Material.hpp"
+#include "Ray.hpp"
 
+class Material;
 class World;	// only need a forward class declaration as the World data member is a reference
 
 class ShadeRec {
@@ -17,7 +18,11 @@ public:
 	Material* material_ptr;			// material of nearest object
 	RGBColor color;					// used in Chapter 3 only
 	World& w;						// world reference for shading
-			
+	Ray ray;
+	int depth;
+	Vector3D dir;
+	float t;
+
 	ShadeRec(World& wr);			// constructor
 	ShadeRec(const ShadeRec& sr);	// copy constructor
 	~ShadeRec();

@@ -12,7 +12,7 @@ public:
 
 	virtual GeometricObject* clone(void) const;				// virtual copy constructor
 	Plane& operator= (const Plane& rhs);					// assignment operator
-	virtual bool hit(const Ray& ray, double& tmin, ShadeRec& sr) const;
+	virtual bool hit(const Ray& ray, float& tmin, ShadeRec& sr) const;
 	
 private:
 	Point3D a;   				// point through which plane passes 

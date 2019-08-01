@@ -53,7 +53,7 @@ void Sphere::set_radius(const double r) {
 	radius = r;
 }
 
-bool Sphere::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
+bool Sphere::hit(const Ray& ray, float& tmin, ShadeRec& sr) const {
 	double 		t;
 	Vector3D	temp 	= ray.o - center;
 	double 		a 		= ray.d * ray.d;

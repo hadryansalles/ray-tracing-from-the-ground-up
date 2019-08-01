@@ -1,4 +1,5 @@
 #include "BRDF.hpp"
+#include "../Utilities/ShadeRec.hpp"
 
 BRDF::BRDF():
     sampler_ptr(NULL)

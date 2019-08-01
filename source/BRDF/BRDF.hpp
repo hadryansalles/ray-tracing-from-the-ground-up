@@ -1,7 +1,9 @@
 #pragma once
 
 #include "../Samplers/Sampler.hpp"
-#include "../Utilities/ShadeRec.hpp"
+#include "../Utilities/Vector3D.hpp"
+
+class ShadeRec;
 
 class BRDF{
 public:
