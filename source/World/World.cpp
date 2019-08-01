@@ -11,6 +11,7 @@
 // Cameras
 #include "../Cameras/Pinhole.hpp"
 #include "../Cameras/Orthographic.hpp"
+#include "../Cameras/ThinLens.hpp"
 
 // utilities
 #include "../Utilities/Vector3D.hpp"
@@ -23,6 +24,7 @@
 // build functions
 
 //#include "../build/BuildSingleSphere.hpp"
+//#include "../build/BuildSpheresQueue.hpp"
 #include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildMultipleObjects.hpp"
 //#include "../build/BuildSinusoid.hpp"

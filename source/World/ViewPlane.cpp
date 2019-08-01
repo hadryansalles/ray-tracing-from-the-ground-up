@@ -55,16 +55,24 @@ void ViewPlane::set_vres(const int v_res) {
 
 void ViewPlane::set_num_samples(const int samples){
 	if(samples != 1){
-		delete sampler_ptr;
+		if(sampler_ptr != NULL){
+			delete sampler_ptr;
+		}
 		sampler_ptr = new Jittered(samples);
 		this->num_samples = samples;
 	}
 }
 
 void ViewPlane::set_sampler(Sampler* sampler_p){
-	if(sampler_p != NULL && sampler_p->get_num_samples() != 1){
-		sampler_ptr = sampler_p;
-		num_samples = sampler_p->get_num_samples();
+	if(sampler_p != NULL){ 
+		if(sampler_p->get_num_samples() != 1){
+			sampler_ptr = sampler_p;
+			num_samples = sampler_p->get_num_samples();
+		}
+		else{
+			delete sampler_p;
+			sampler_p = NULL;
+		}
 	}
 }
 

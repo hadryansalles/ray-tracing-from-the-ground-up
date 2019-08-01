@@ -1,20 +1,30 @@
 // This builds the cover image for Chapter 3: Bare Bones Ray Tracing
 void World::build(void) {
-	vp.set_hres(1000);
-	vp.set_vres(1000);
-	vp.set_pixel_size(0.3);
-	vp.set_sampler(new Jittered(1));
+	vp.set_hres(800);
+	vp.set_vres(800);
+	vp.set_pixel_size(0.5);
+	vp.set_sampler(new Regular(16));
 	background_color = RGBColor(1);
 	tracer_ptr = new MultipleObjects(this);
 
+	/* 
 	Pinhole* pinhole_ptr = new Pinhole(Point3D(50, 0, 100), Point3D(-10, 0, -10));
 	pinhole_ptr->set_distance(100);
 	pinhole_ptr->set_up(Vector3D(0, 1, 0));
 	pinhole_ptr->compute_uvw();
 	camera = pinhole_ptr;
+	*/
 
+	ThinLens* thin_len = new ThinLens(Point3D(0, 0, 100), Point3D(0, 0, -100));
+	thin_len->set_sampler(new Jittered(100));
+	thin_len->set_distance(100);
+	thin_len->set_focal_dist(80);
+	thin_len->set_up(Vector3D(0, 1, 0));
+	thin_len->set_lens_radius(2);
+	thin_len->compute_uvw();
+	camera = thin_len;
+	
 	// colours
-
 	RGBColor yellow(1, 1, 0);										// yellow
 	RGBColor brown(0.71, 0.40, 0.16);								// brown
 	RGBColor dark_green(0.0, 0.41, 0.41);							// dark_green
@@ -27,7 +37,7 @@ void World::build(void) {
 	
 	// spheres
 				
-	Sphere*	sphere_ptr1 = new Sphere(Point3D(5, 3, 0), 30); 
+	Sphere*	sphere_ptr1 = new Sphere(Point3D(0, 0, 0), 30); 
 	sphere_ptr1->set_color(yellow);	   								// yellow
 	add_object(sphere_ptr1);
 	
