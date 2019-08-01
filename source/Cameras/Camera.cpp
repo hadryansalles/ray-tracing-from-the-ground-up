@@ -5,7 +5,7 @@ Camera::Camera(Point3D eye_p, Point3D lookat):
     eye(eye_p),
     look_at(lookat),
     up(0, 1, 0),
-    exposure_time(0)
+    exposure_time(1)
 {}
 
 Camera::~Camera()

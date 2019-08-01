@@ -12,11 +12,11 @@ public:
     void set_zoom(const float zoom);
     float get_zoom() const;
 
-    void render_scene(World& w);
+    virtual void render_scene(World& w);
 
-private:
+protected:
     float d; // Distance from view-plane
     float zoom; // Zoom factor
 
-    Vector3D ray_direction(const Point2D& p) const;
+    virtual Vector3D ray_direction(const Point2D& pixel_point) const;
 };
