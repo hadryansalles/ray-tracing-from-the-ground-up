@@ -27,3 +27,5 @@ public:
 	RGBColor powc(float p) const;					// raise components to a power
 	float average(void) const;						// the average of the components
 };
+
+RGBColor operator* (const float a, const RGBColor& c);
