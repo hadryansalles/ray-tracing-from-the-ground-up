@@ -3,6 +3,7 @@
 #include <vector>
 #include "../Utilities/Point2D.hpp"
 #include "../Utilities/Maths.hpp"
+#include "../Utilities/Constants.hpp"
 
 class Sampler{
 public:
@@ -17,6 +18,9 @@ public:
 
     Point2D sample_unit_square();
     virtual void generate_samples() = 0;
+
+    void map_samples_to_unit_disk();
+    Point2D sample_unit_disk();
     
 protected:
     int num_samples;
@@ -25,4 +29,5 @@ protected:
     int jump;
 
     std::vector<Point2D> samples;
+    std::vector<Point2D> disk_samples;
 };
