@@ -10,6 +10,7 @@
 
 // Cameras
 #include "../Cameras/Pinhole.hpp"
+#include "../Cameras/Orthographic.hpp"
 
 // utilities
 #include "../Utilities/Vector3D.hpp"
@@ -31,7 +32,7 @@ World::World()
 	:  	background_color(black),
 		tracer_ptr(NULL),
 		window(NULL),
-		camera(NULL)
+		camera(new Orthographic())
 {}
 
 World::~World() {		
@@ -49,62 +50,6 @@ World::~World() {
 	}
 	delete_objects();
 }
-
-// This uses orthographic viewing along the zw axis
-void World::render_scene() {
-	RGBColor	pixel_color;	 	
-	Ray			ray;					
-	float		zw		= 0.0;			// hardwired in
-	vp.sampler_ptr->generate_samples();
-
-	Point2D sp; // sample point in a square
-	Point2D pp; // sample point pixel
-	ray.d = Vector3D(0, 0, -1);
-
-	openWindow(vp.vres, vp.hres);
-
-	// TIME MANAGER
-	struct timespec start_processing;
-	struct timespec start_displaying;
-	struct timespec now;
-	clock_gettime(CLOCK_MONOTONIC, &start_processing);
-
-	float time_displaying = 0;
-	
-	for (int r = 0; r < vp.vres; r++) {			// up
-		for (int c = 0; c <= vp.hres; c++) {		// across 					
-
-			// PROCESSING STUFF	
-			// ANTI ALIASING
-			pixel_color = black;
-			for(int j = 0; j < vp.num_samples; j++) {
-				sp = vp.sampler_ptr->sample_unit_square();
-				pp.x = vp.s*(c - 0.5*vp.hres + sp.x);
-				pp.y = vp.s*(r - 0.5*vp.vres + sp.y);
-				ray.o = Point3D(pp.x, pp.y, -zw);
-				pixel_color += tracer_ptr->trace_ray(ray);
-			}
-			pixel_color /= vp.num_samples;
-				
-			clock_gettime(CLOCK_MONOTONIC, &start_displaying); 			
-			
-			// DISPLAYING STUFF
-			display_pixel(r, c, pixel_color);
-			window->update();
-			if(!window->isOpen()){
-				return;
-			}
-			clock_gettime(CLOCK_MONOTONIC, &now); 			
-			time_displaying += (now.tv_sec - start_displaying.tv_sec);
-			time_displaying += (now.tv_nsec - start_displaying.tv_nsec)/1000000000.0;
-		}	
-	}
-	printf("\r\nRendering completed.\nTotal processing time: %.4f seconds.\nTotal displaying time: %.4f seconds.\n", 
-		(now.tv_sec - start_processing.tv_sec)+((now.tv_nsec - start_processing.tv_nsec)/1000000000.0) - time_displaying, time_displaying);
-	while(window->isOpen()){
-		window->update();
-	}
-}  
 
 RGBColor World::max_to_one(const RGBColor& c) const  {
 	float max_value = max(c.r, max(c.g, c.b));

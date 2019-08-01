@@ -36,8 +36,7 @@ public:
 	void add_object(GeometricObject* object_ptr);
 	
 	void build();
-	void render_scene();
-					
+				
 	RGBColor max_to_one(const RGBColor& c) const;
 	RGBColor clamp_to_color(const RGBColor& c) const;
 	
