@@ -80,7 +80,7 @@ public:
 	RGBColor clamp_to_color(const RGBColor& c) const;
 	
 	void display_pixel(const int row, const int column, const RGBColor& pixel_color) const;
-	ShadeRec hit_objects(const Ray& ray, float& tmin) const;
+	ShadeRec hit_objects(const Ray& ray) const;
 
 	void openWindow(int w, int h, bool thread = true);
 					
