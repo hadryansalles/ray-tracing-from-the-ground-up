@@ -1,40 +1,11 @@
 #include "World.hpp"
 
-// geometric objects
-#include "../GeometricObjects/Plane.hpp"
-#include "../GeometricObjects/Sphere.hpp"
-
-// tracers
-#include "../Tracers/MultipleObjects.hpp"
-#include "../Tracers/Sinusoid.hpp"
-
-// Cameras
-#include "../Cameras/Pinhole.hpp"
-#include "../Cameras/Orthographic.hpp"
-#include "../Cameras/ThinLens.hpp"
-
-// utilities
-#include "../Utilities/Vector3D.hpp"
-#include "../Utilities/Point2D.hpp"
-#include "../Utilities/Point3D.hpp"
-#include "../Utilities/Normal.hpp"
-#include "../Utilities/ShadeRec.hpp"
-#include "../Utilities/Maths.hpp"
-
-// build functions
-
-//#include "../build/BuildSingleSphere.hpp"
-//#include "../build/BuildSpheresQueue.hpp"
-#include "../build/BuildBBCoverPic.hpp"
-//#include "../build/BuildMultipleObjects.hpp"
-//#include "../build/BuildSinusoid.hpp"
-//#include "../build/BuildHorizontalPlane.hpp"
-
 World::World()
 	:  	background_color(black),
 		tracer_ptr(NULL),
 		window(NULL),
-		camera(new Orthographic())
+		camera(new Orthographic()),
+		ambient_ptr(new Ambient())
 {}
 
 World::~World() {		
@@ -49,6 +20,10 @@ World::~World() {
 	if(camera){
 		delete camera;
 		camera = NULL;
+	}
+	if(ambient_ptr){
+		delete ambient_ptr;
+		ambient_ptr = NULL;
 	}
 	delete_objects();
 }
