@@ -3,4 +3,4 @@
 *.o 
 *.obj
 build/*
-./source/outdated/*
+outdated/*
