@@ -33,7 +33,7 @@ ViewPlane& ViewPlane::operator= (const ViewPlane& rhs) {
 	inv_gamma			= rhs.inv_gamma;
 	show_out_of_gamut	= rhs.show_out_of_gamut;
 	num_samples 		= rhs.num_samples;
-	sampler_ptr 		= rhs.sampler_ptr;
+	sampler_ptr 		= rhs.sampler_ptr->clone();
 
 	return (*this);
 }

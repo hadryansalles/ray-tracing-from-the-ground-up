@@ -1,27 +1,24 @@
 #include "World.hpp"
+#include "../Utilities/Constants.hpp"
 
 // Window
 #include "../Window/Window-THREAD.hpp"
 #include "../Window/Window-NOTHREAD.hpp"
 
 // geometric objects
-#include "../GeometricObjects/GeometricObject.hpp"
 #include "../GeometricObjects/Plane.hpp"
 #include "../GeometricObjects/Sphere.hpp"
 
 // Lights
-#include "../Light/Light.hpp"
-#include "../Light/Ambient.hpp"
+#include "../Light/Directional.hpp"
 #include "../Light/PointLight.hpp"
 
 // tracers
-#include "../Tracers/Tracer.hpp"
-#include "../Tracers/MultipleObjects.hpp"
-#include "../Tracers/Sinusoid.hpp"
+//#include "../Tracers/MultipleObjects.hpp"
+//#include "../Tracers/Sinusoid.hpp"
 #include "../Tracers/RayCast.hpp"
 
 // Cameras
-#include "../Cameras/Camera.hpp"
 #include "../Cameras/Pinhole.hpp"
 #include "../Cameras/Orthographic.hpp"
 #include "../Cameras/ThinLens.hpp"
@@ -30,21 +27,19 @@
 #include "../Materials/Matte.hpp"
 
 // utilities
-#include "../Utilities/Ray.hpp"
 #include "../Utilities/Vector3D.hpp"
 #include "../Utilities/Point2D.hpp"
 #include "../Utilities/Point3D.hpp"
 #include "../Utilities/Normal.hpp"
-#include "../Utilities/ShadeRec.hpp"
 #include "../Utilities/Maths.hpp"
-#include "../Utilities/Constants.hpp"
-#include "../Utilities/RGBColor.hpp"
 
 // build functions
 //#include "../build/BuildSingleSphere.hpp"
 //#include "../build/BuildSpheresQueue.hpp"
+//#include "../build/BuildSingleSphereLight.hpp"
+#include "../build/BuildShadedTest.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
-#include "../build/BuildBBCoverPicLight.hpp"
+//#include "../build/BuildBBCoverPicLight.hpp"
 //#include "../build/BuildMultipleObjects.hpp"
 //#include "../build/BuildSinusoid.hpp"
 //#include "../build/BuildHorizontalPlane.hpp"
@@ -126,16 +121,19 @@ void World::display_pixel(const int row, const int column, const RGBColor& raw_c
 }
 
 ShadeRec World::hit_objects(const Ray& ray, const float tmin_) {
+
 	ShadeRec sr(*this); 
 	Normal normal;
 	Point3D local_hit_point; 			
 	
 	float t;
+	
 	float tmin = tmin_;
 	int num_objects = objects.size();
-	
+		
 	for (int j = 0; j < num_objects; j++) {
-		if (objects[j]->hit(ray, t, sr) && (t < tmin)) {
+
+    	if (objects[j]->hit(ray, t, sr) && (t < tmin)) {
 			sr.hit_an_object = true;
 			tmin = t; 
 			//sr.color= objects[j]->get_color();
@@ -172,6 +170,10 @@ void World::add_object(GeometricObject* object_ptr) {
 	objects.push_back(object_ptr);	
 }
 
+void World::add_light(Light* light_ptr){
+	lights.push_back(light_ptr);
+}
+
 void World::openWindow(int w, int h, bool thread) {
 	if(thread){
 		window = new Window_THREAD(w, h);
@@ -180,4 +182,18 @@ void World::openWindow(int w, int h, bool thread) {
 		window = new Window_NOTHREAD(w, h);
 	}
 	window->init();
+}
+
+void World::set_camera(Camera* cam_pt){
+	if(camera){
+		delete camera;
+	}
+	camera = cam_pt;
+}
+
+void World::set_ambient_light(Light* light_ptr){
+	if(ambient_ptr){
+		delete ambient_ptr;
+	}
+	ambient_ptr = light_ptr;
 }
