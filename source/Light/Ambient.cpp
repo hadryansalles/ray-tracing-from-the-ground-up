@@ -6,11 +6,27 @@ Ambient::Ambient(float ls_, RGBColor color_, bool shadows_):
     color(color_)
 {}
 
-Ambient::Ambient(Ambient& ambient):
+Ambient::Ambient(const Ambient& ambient):
     Light(ambient.get_shadows()),
     ls(ambient.get_ls()),
     color(ambient.get_color())    
 {}
+
+Light* Ambient::clone() const {
+	return (new Ambient(*this));
+}	
+
+Ambient& Ambient::operator= (const Ambient& rhs) {
+	if (this == &rhs)
+		return (*this);
+			
+	Light::operator= (rhs);
+	
+	ls 		= rhs.ls;
+	color 	= rhs.color;
+	
+	return (*this);
+}
 
 float Ambient::get_ls() const{
     return ls;

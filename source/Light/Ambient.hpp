@@ -5,7 +5,10 @@
 class Ambient:public Light{
 public:
     Ambient(float ls_ = 1.0, RGBColor color_ = 1.0, bool shadows_ = false);
-    Ambient(Ambient& ambient);
+    Ambient(const Ambient& ambient);
+
+    virtual Light* clone() const;
+    Ambient& operator=(const Ambient& rhs);
 
     float get_ls() const;
     void set_ls(const float ls_);
