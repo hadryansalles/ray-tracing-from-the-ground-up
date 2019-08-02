@@ -1,6 +1,6 @@
 APP = RTX
 CC = g++
-FLAGS =	-W -Wall -ansi -pedantic
+FLAGS =	-ansi -pedantic
 LINKS = -lSDL2 -lpthread -pthread -std=c++11
 RM = rm -rf
 
