@@ -1,13 +1,17 @@
 #pragma once
 
+#include "../Utilities/Vector3D.hpp"
 #include "../Utilities/RGBColor.hpp"
-#include "../Utilities/ShadeRec.hpp"
+#include "../Utilities/Ray.hpp"
 
+class ShadeRec;
 
 class Light{
 public:
     Light(const bool shadows_ = false);
-    Light(Light& light);
+    Light(const Light& light);
+    Light& operator=(const Light& rhs);
+    virtual Light* clone() const = 0;
     virtual ~Light();
 
     bool get_shadows() const;

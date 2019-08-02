@@ -4,9 +4,17 @@ Light::Light(const bool shadows_):
     shadows(shadows_)
 {}
 
-Light::Light(Light& light):
+Light::Light(const Light& light):
     shadows(light.get_shadows())
 {}
+
+Light& Light::operator= (const Light& rhs) {
+	if (this == &rhs)
+		return (*this);
+
+	return (*this);
+}
+
 
 Light::~Light()
 {}
