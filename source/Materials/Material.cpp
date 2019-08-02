@@ -3,20 +3,27 @@
 Material::Material()
 {}
 
-Material::Material(Material& material)
+Material::Material(const Material& material)
 {}
+
+Material& Material::operator=(const Material& rhs){
+    if(this == &rhs){
+        return *this;
+    }
+    return (*this);
+}
 
 Material::~Material()
 {}
 
 RGBColor Material::shade(ShadeRec& sr){
-    return RGBColor(0);
+    return black;
 }
 
 RGBColor Material::area_light_shade(ShadeRec& sr){
-    return RGBColor(0);
+    return black;
 }
 
 RGBColor Material::path_shade(ShadeRec& sr){
-    return RGBColor(0);
+    return black;
 }
