@@ -1,7 +1,9 @@
-#pragma once
-
 #include "Pinhole.hpp"
-#include "../World/World.hpp"
+
+#include "../Utilities/Constants.hpp"
+#include "../Utilities/Point3D.hpp"
+#include "../Utilities/Vector3D.hpp"
+#include <math.h>
 
 Pinhole::Pinhole(Point3D eye_p, Point3D lookat):
     Camera(eye_p, lookat),
@@ -55,11 +57,11 @@ void Pinhole::render_scene(World& w){
 				sp = vp->sampler_ptr->sample_unit_square();
 				pp.x = vp->s*(c - 0.5*vp->hres + sp.x);
 				pp.y = vp->s*(r - 0.5*vp->vres + sp.y);
-				ray.d = ray_direction(pp);
+				ray.d = ray_direction(pp); 
 				L += w.tracer_ptr->trace_ray(ray);
 			}
 			L /= vp->num_samples;
-				
+					
 			clock_gettime(CLOCK_MONOTONIC, &start_displaying); 			
 			
 			// DISPLAYING STUFF

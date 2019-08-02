@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Camera.hpp"
+#include "../World/World.hpp"
 
 class Pinhole : public Camera {
 public:

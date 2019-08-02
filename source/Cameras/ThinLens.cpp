@@ -4,7 +4,9 @@
 ThinLens::ThinLens(Point3D eye_p, Point3D lookat):
     Pinhole(eye_p, lookat),
     sampler_ptr(new Jittered(4))
-{}
+{
+    sampler_ptr->map_samples_to_unit_disk();
+}
 
 ThinLens::~ThinLens(){
     if(sampler_ptr){
@@ -73,7 +75,6 @@ void ThinLens::render_scene(World& w){
 	struct timespec now;
 	clock_gettime(CLOCK_MONOTONIC, &start_processing);
 	float time_displaying = 0;
-
     for (int r = 0; r < vp->vres; r++) {	
 		for (int c = 0; c <= vp->hres; c++) {					
 
@@ -81,17 +82,21 @@ void ThinLens::render_scene(World& w){
 			// ANTI ALIASING
 			L = black;
 			for(int j = 0; j < vp->num_samples; j++) {
-				sp = vp->sampler_ptr->sample_unit_square();
-				pp.x = vp->s*(c - 0.5*vp->hres + sp.x);
+				
+                sp = vp->sampler_ptr->sample_unit_square();
+				  
+                pp.x = vp->s*(c - 0.5*vp->hres + sp.x);
 				pp.y = vp->s*(r - 0.5*vp->vres + sp.y);
                 
                 dp = sampler_ptr->sample_unit_disk();
+        
                 lp = dp * lens_radius;
                 
                 ray.o = eye + (lp.x*u + lp.y*v);
 				ray.d = ray_direction(pp, lp);
-				L += w.tracer_ptr->trace_ray(ray);
+                L += w.tracer_ptr->trace_ray(ray);
 			}
+         
 			L /= vp->num_samples;
             L *= exposure_time;
 				

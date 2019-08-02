@@ -1,5 +1,4 @@
 #include "Camera.hpp"
-#include "../World/World.hpp"
 
 Camera::Camera(Point3D eye_p, Point3D lookat):
     eye(eye_p),
