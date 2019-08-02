@@ -1,4 +1,5 @@
 #include "PointLight.hpp"
+#include "../Utilities/ShadeRec.hpp"
 
 PointLight::PointLight(Vector3D location_, float ls_, RGBColor color_, bool shadows_):
     Ambient(ls_, color_, shadows_),
