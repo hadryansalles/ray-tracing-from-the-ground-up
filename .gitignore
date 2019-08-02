@@ -4,3 +4,4 @@
 *.obj
 build/*
 ./source/outdated/*
+./source/outdated
