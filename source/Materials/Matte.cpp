@@ -1,15 +1,54 @@
 #include "Matte.hpp"
 
+#include "../World/World.hpp"
+
 Matte::Matte(Lambertian* ambient_brdf_, Lambertian* diffuse_brdf_):
-    ambient_brdf(ambient_brdf_),
-    diffuse_brdf(diffuse_brdf_)
+    Material()
 {
     if(ambient_brdf_ == NULL){
         ambient_brdf = new Lambertian();
     }
-    if(diffuse_brdf == NULL){
-        diffuse_brdf_ = new Lambertian();
+    if(diffuse_brdf_ == NULL){
+        diffuse_brdf = new Lambertian();
     }
+}
+
+Matte::Matte(const Matte& m):
+    Material(m)
+{   
+    if(m.ambient_brdf){
+        ambient_brdf = m.ambient_brdf->clone();
+    }
+    else{
+        ambient_brdf = new Lambertian;
+    }
+
+    if(m.diffuse_brdf){
+        diffuse_brdf = m.diffuse_brdf->clone();
+    }
+    else{
+        diffuse_brdf = new Lambertian;
+    }
+}
+
+Material* Matte::clone() const{
+    return (new Matte(*this));
+}
+
+Matte& Matte::operator=(const Matte& rhs){
+    if(this == &rhs){
+        return (*this);
+    }
+    Material::operator=(rhs);
+    if(ambient_brdf && rhs.ambient_brdf){
+        delete ambient_brdf;
+        ambient_brdf = rhs.ambient_brdf->clone();
+    }
+    if(diffuse_brdf && rhs.diffuse_brdf){
+        delete diffuse_brdf;
+        diffuse_brdf = rhs.diffuse_brdf->clone();
+    }
+    return(*this);
 }
 
 Matte::~Matte(){
@@ -24,13 +63,13 @@ Matte::~Matte(){
     }
 }
 
-
 Lambertian* Matte::get_ambient_brdf() const{
     return ambient_brdf;
 }
 
 void Matte::set_ambient_brdf(Lambertian* ambient_brdf_){
-    ambient_brdf = ambient_brdf_;
+    if(ambient_brdf_ != NULL)
+        ambient_brdf = ambient_brdf_;
 }
 
 Lambertian* Matte::get_diffuse_brdf() const{
@@ -38,7 +77,8 @@ Lambertian* Matte::get_diffuse_brdf() const{
 }
 
 void Matte::set_diffuse_brdf(Lambertian* diffuse_brdf_){
-    diffuse_brdf = diffuse_brdf_;
+    if(diffuse_brdf_ != NULL)
+        diffuse_brdf = diffuse_brdf_;
 }
 
 void Matte::set_ka(const float k){
@@ -60,7 +100,7 @@ RGBColor Matte::shade(ShadeRec& sr){
     int num_lights = sr.w.lights.size();
 
     for(int j = 0; j < num_lights; j++){
-        Vector3D wi = sr.w.lighst[j]->get_direction(sr);
+        Vector3D wi = sr.w.lights[j]->get_direction(sr);
         float ndotwi = sr.normal*wi;
         if(ndotwi > 0.0){
             L += diffuse_brdf->f(sr, wo, wi)*sr.w.lights[j]->L(sr)*ndotwi;
