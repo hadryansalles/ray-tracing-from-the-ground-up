@@ -8,6 +8,10 @@
 class Sampler{
 public:
     Sampler(int samples = 1, int sets = 50);
+    Sampler(Sampler& samp);
+    Sampler& operator=(const Sampler& rhs);
+    virtual Sampler* clone() = 0;
+
     virtual ~Sampler();
 
     int get_num_samples();

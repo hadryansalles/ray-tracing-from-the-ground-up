@@ -4,6 +4,9 @@ Regular::Regular(int samples, int sets) :
     Sampler(samples, sets)
 { }
 
+Sampler* Regular::clone(){
+    return (new Regular(*this));
+}
 void Regular::generate_samples(){
     int n = (int) sqrt(num_samples);
 	for (int j = 0; j < num_sets; j++)
