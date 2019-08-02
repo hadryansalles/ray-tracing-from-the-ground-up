@@ -1,5 +1,7 @@
 #include "Sphere.hpp"
 
+#include "math.h"
+
 const double Sphere::kEpsilon = 0.001;
 					
 Sphere::Sphere(void)	

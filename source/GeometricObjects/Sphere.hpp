@@ -1,6 +1,5 @@
 #pragma once
 
-#include "math.h"
 #include "GeometricObject.hpp"
 
 class Sphere: public GeometricObject {	
@@ -23,5 +22,5 @@ public:
 	void set_center(const double x, const double y, const double z);
 	void set_radius(const double r);
 		
-	virtual bool hit(const Ray& ray, float& t, ShadeRec& sr) const;	
+	virtual bool hit(const Ray& ray, float& t, ShadeRec& s) const;	
 };
