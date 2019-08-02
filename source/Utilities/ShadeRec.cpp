@@ -1,5 +1,5 @@
 #include "ShadeRec.hpp"
-#include "../Materials/Material.hpp"
+#include "Constants.hpp"
 
 // there is no default constructor as the World reference always has to be initialised
 // there is also no assignment operator as we don't want to assign the world
@@ -14,8 +14,10 @@ ShadeRec::ShadeRec(World& wr)
 		hit_point(),
 		material_ptr(NULL),
 		normal(),
-		color(black),
-		w(wr)
+		w(wr),
+		ray(),
+		depth(0),
+		t(0)
 {}
 
 // ------------------------------------------------------------------ copy constructor
@@ -24,13 +26,11 @@ ShadeRec::ShadeRec(const ShadeRec& sr)
 		local_hit_point(sr.local_hit_point),
 		hit_point(sr.hit_point),
 		material_ptr(sr.material_ptr),
-		color(sr.color),
-		w(sr.w)
+		w(sr.w),
+		ray(sr.ray),
+		depth(sr.depth),
+		t(sr.t)
 {}
 
 ShadeRec::~ShadeRec(){
-	if(material_ptr){
-		delete material_ptr;
-		material_ptr = NULL;
-	}
 }
