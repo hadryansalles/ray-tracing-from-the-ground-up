@@ -43,10 +43,12 @@ GeometricObject::~GeometricObject (void) {
 }
 
 void GeometricObject::set_material(Material* material){
-	if(material_ptr){
-		delete material_ptr;
+	if(material != NULL){
+		if(material_ptr){
+			delete material_ptr;
+		}
+		material_ptr = material;
 	}
-	material_ptr = material;
 }
 
 Material* GeometricObject::get_material() const{

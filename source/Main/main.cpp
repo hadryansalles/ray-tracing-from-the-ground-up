@@ -13,6 +13,6 @@ int main(){
         return 1;
     }
     w.camera->render_scene(w);
-    debug_print("Main thread terminated.\n");
+    printf("Main thread terminated.\n");
     return 0;
 }

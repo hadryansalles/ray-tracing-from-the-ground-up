@@ -20,6 +20,6 @@ public:
 	virtual BBox get_bounding_box();
 
 protected:
-	Material* material_ptr;
+	mutable Material* material_ptr;
 	GeometricObject& operator= (const GeometricObject& rhs);
 };
