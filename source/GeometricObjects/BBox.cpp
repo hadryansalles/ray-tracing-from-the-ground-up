@@ -10,7 +10,7 @@ BBox::BBox(const BBox& bbox)
     , p1(bbox.p1)
 {}
 
-BBox* BBox::clone(){
+BBox* BBox::clone() const{
     return (new BBox(*this));
 }
 
