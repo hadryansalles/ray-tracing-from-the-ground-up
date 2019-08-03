@@ -9,6 +9,7 @@
 #include "../GeometricObjects/Plane.hpp"
 #include "../GeometricObjects/Sphere.hpp"
 #include "../GeometricObjects/Box.hpp"
+#include "../GeometricObjects/Triangle.hpp"
 
 // Lights
 #include "../Light/Directional.hpp"
@@ -38,8 +39,8 @@
 //#include "../build/BuildSingleSphere.hpp"
 //#include "../build/BuildSpheresQueue.hpp"
 //#include "../build/BuildSingleSphereLight.hpp"
-#include "../build/BuildShadedTest.hpp"
-//#include "../build/BuildBox.hpp"
+//#include "../build/BuildShadedTest.hpp"
+#include "../build/BuildBox.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildBBCoverPicLight.hpp"
 //#include "../build/BuildMultipleObjects.hpp"
