@@ -31,8 +31,13 @@ Matte::Matte(const Matte& m):
     }
 }
 
-Material* Matte::clone() const{
+Matte* Matte::clone() const{
     return (new Matte(*this));
+}
+Matte* Matte::clone(RGBColor new_color) const {
+    Matte* new_matte = new Matte(*this);
+    new_matte->set_cd(new_color);
+    return (new_matte);
 }
 
 Matte& Matte::operator=(const Matte& rhs){

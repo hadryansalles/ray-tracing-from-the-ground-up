@@ -4,10 +4,12 @@ BRDF::BRDF():
     sampler_ptr(NULL)
 {}
 
-BRDF::BRDF(const BRDF& brdf):
-    sampler_ptr(brdf.sampler_ptr->clone())
-{}
-
+BRDF::BRDF(const BRDF& brdf){
+    if(brdf.sampler_ptr){
+        sampler_ptr = brdf.sampler_ptr->clone();
+    }
+}
+    
 BRDF::BRDF(Sampler* sampler):
     sampler_ptr(sampler)
 {}

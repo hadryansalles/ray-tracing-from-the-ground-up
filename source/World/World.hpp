@@ -14,6 +14,7 @@
 #include "../Tracers/Tracer.hpp"
 #include "../GeometricObjects/GeometricObject.hpp"
 #include "../Utilities/Ray.hpp"
+#include "../Utilities/Debug.hpp"
 
 #include "../Window/Window.hpp"
 

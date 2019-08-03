@@ -82,7 +82,3 @@ bool BBox::hit(const Ray& ray) const{
     }
     return (t0 < t1 && t1 > kEpsilon);
 }
-
-bool BBox::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
-    return false;
-}

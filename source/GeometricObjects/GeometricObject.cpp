@@ -32,7 +32,7 @@ GeometricObject& GeometricObject::operator= (const GeometricObject& rhs) {
 }
 
 BBox GeometricObject::get_bounding_box(){
-	return;
+	return BBox();
 }
 
 GeometricObject::~GeometricObject (void) {

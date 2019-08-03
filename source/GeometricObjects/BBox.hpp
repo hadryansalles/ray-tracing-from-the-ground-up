@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Utilities/Ray.hpp"
-#include "../Utilities/ShadeRec.hpp"
 #include "../Utilities/Constants.hpp"
 
 class BBox{
@@ -13,7 +12,6 @@ public:
     virtual ~BBox();
 
     virtual bool hit(const Ray& ray) const;
-    virtual bool hit(const Ray& ray, double& tmin, ShadeRec& sr) const;
     
     Point3D p0;
     Point3D p1;

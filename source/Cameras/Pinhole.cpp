@@ -3,6 +3,7 @@
 #include "../Utilities/Constants.hpp"
 #include "../Utilities/Point3D.hpp"
 #include "../Utilities/Vector3D.hpp"
+#include "../Utilities/Debug.hpp"
 #include <math.h>
 
 Pinhole::Pinhole(Point3D eye_p, Point3D lookat):
@@ -28,6 +29,7 @@ float Pinhole::get_zoom() const{
 }
 
 void Pinhole::render_scene(World& w){
+	debug_print("Pinhole rendering.\n");
     RGBColor L;
     ViewPlane* vp = &w.vp;
     Ray ray;
@@ -47,12 +49,14 @@ void Pinhole::render_scene(World& w){
 	clock_gettime(CLOCK_MONOTONIC, &start_processing);
 	float time_displaying = 0;
 
+	debug_print("Joining entering 2d-for.\n");
     for (int r = 0; r < vp->vres; r++) {	
 		for (int c = 0; c <= vp->hres; c++) {					
 
 			// PROCESSING STUFF	
 			// ANTI ALIASING
 			L = black;
+			debug_print("Getting anti aliasing samples.\n");
 			for(int j = 0; j < vp->num_samples; j++) {
 				sp = vp->sampler_ptr->sample_unit_square();
 				pp.x = vp->s*(c - 0.5*vp->hres + sp.x);
@@ -60,6 +64,7 @@ void Pinhole::render_scene(World& w){
 				ray.d = ray_direction(pp); 
 				L += w.tracer_ptr->trace_ray(ray);
 			}
+			debug_print("Anti aliasing samples get.\n");
 			L /= vp->num_samples;
 					
 			clock_gettime(CLOCK_MONOTONIC, &start_displaying); 			

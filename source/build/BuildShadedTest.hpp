@@ -7,7 +7,7 @@ void World::build() {
 	vp.set_hres(900);
 	vp.set_vres(900);
 	vp.set_pixel_size(0.2);
-	vp.set_sampler(new Jittered(25));
+	vp.set_sampler(new Jittered(4));
 
 	// the ambient light here is the same as the default set in the World
 	// constructor, and can therefore be left out
@@ -75,6 +75,8 @@ void World::build() {
 	sphere_ptr2->set_material(matte_ptr2);								// brown
 	add_object(sphere_ptr2);
 	
+
+    add_object(new Box(Point3D(-10, 0, 10), Point3D(5, 5, 5), new Matte));
 
 	Matte* matte_ptr3 = new Matte;
 	matte_ptr3->set_ka(ka);	

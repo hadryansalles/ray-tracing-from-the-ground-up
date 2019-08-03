@@ -9,7 +9,6 @@ public:
     Torus(const Torus& torus);
     Torus& operator=(Torus& rhs);
     virtual Torus* clone(void) const;
-    ~Torus();
     
     bool hit(const Ray& ray, float& t, ShadeRec& s) const;
 
