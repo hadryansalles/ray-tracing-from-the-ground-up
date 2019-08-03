@@ -3,8 +3,8 @@
 #include "../Utilities/Constants.hpp"
 #include "../Materials/Material.hpp"
 
-GeometricObject::GeometricObject(void)
-	: 	material_ptr(NULL)
+GeometricObject::GeometricObject(Material* material_p)
+	: 	material_ptr(material_p)
 {}
 
 GeometricObject::GeometricObject (const GeometricObject& object){
