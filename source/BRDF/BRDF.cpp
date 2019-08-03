@@ -4,7 +4,8 @@ BRDF::BRDF():
     sampler_ptr(NULL)
 {}
 
-BRDF::BRDF(const BRDF& brdf){
+BRDF::BRDF(const BRDF& brdf)
+    : sampler_ptr(NULL) {
     if(brdf.sampler_ptr){
         sampler_ptr = brdf.sampler_ptr->clone();
     }
@@ -18,6 +19,11 @@ BRDF& BRDF::operator=(const BRDF& rhs){
     if(this == &rhs){
         return *this;
     }
+    if(rhs.sampler_ptr != NULL){
+        sampler_ptr = rhs.sampler_ptr->clone();
+    }
+    sampler_ptr = NULL;
+    return (*this);
 }
 
 BRDF::~BRDF(){

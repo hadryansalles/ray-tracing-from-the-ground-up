@@ -8,7 +8,7 @@ public:
     Matte(Lambertian* ambient_brdf_ = NULL, Lambertian* diffuse_brdf_ = NULL);
     Matte(const Matte& m);
     virtual Matte* clone() const;
-    Matte* clone(RGBColor new_color) const;
+    virtual Matte* clone(RGBColor new_color) const;
     Matte& operator=(const Matte& rhs);
     ~Matte();
 
