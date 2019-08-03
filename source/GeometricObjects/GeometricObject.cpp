@@ -31,6 +31,10 @@ GeometricObject& GeometricObject::operator= (const GeometricObject& rhs) {
 	return (*this);
 }
 
+BBox GeometricObject::get_bounding_box(){
+	return;
+}
+
 GeometricObject::~GeometricObject (void) {
 	if(material_ptr){
 		delete material_ptr;

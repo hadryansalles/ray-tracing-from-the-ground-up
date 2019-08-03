@@ -1,6 +1,6 @@
 #include "BBox.hpp"
 
-BBox::BBox(Point3D p0_ = Point3D(0), Point3D p1_ = Point3D(0))
+BBox::BBox(Point3D p0_, Point3D p1_)
     : p0(p0_)
     , p1(p1_)
 {}
@@ -81,4 +81,8 @@ bool BBox::hit(const Ray& ray) const{
         t1 = t_max.z;
     }
     return (t0 < t1 && t1 > kEpsilon);
+}
+
+bool BBox::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
+    return false;
 }

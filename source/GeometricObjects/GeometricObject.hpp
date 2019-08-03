@@ -3,6 +3,7 @@
 #include "../Utilities/Point3D.hpp"
 #include "../Utilities/Ray.hpp"
 #include "../Utilities/ShadeRec.hpp"
+#include "../GeometricObjects/BBox.hpp"
 					
 class GeometricObject {	
 public:	
@@ -16,6 +17,7 @@ public:
 	virtual void set_material(Material* material);
 	Material* get_material() const;
 
+	virtual BBox get_bounding_box();
 
 protected:
 	Material* material_ptr;
