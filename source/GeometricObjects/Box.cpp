@@ -1,26 +1,65 @@
 #include "Box.hpp"
 
-Box::Box(Point3D p0_, Point3D p1_)
-    : BBox(p0_, p1_)
+Box::Box(Material* material_p)
+    : GeometricObject(material_p)
+    , p0(0)
+    , p1(0)
+    , dimensions(0)
+{}
+
+Box::Box(Point3D p0_, Point3D dimensions_, Material* material_p)
+    : GeometricObject(material_p)
+    , p0(p0_)
+    , p1(p0_ + dimensions_)
+    , dimensions(dimensions_)
 {}
 
 Box::Box(const Box& box)
-    : BBox(box)
+    : GeometricObject(box)
+    , p0(box.p0)
+    , p1(box.p1)
+    , dimensions(box.dimensions)
 {}
-
+    
 Box* Box::clone() const{
     return (new Box(*this));
 }
 
 Box& Box::operator= (Box& rhs){
     if(this == &rhs){
-        return *this;
+        return (*this);
     }
-    BBox::operator=(rhs);
-    return *this;
+    GeometricObject::operator=(rhs);
+
 }
 
-bool Box::hit(const Ray& ray, double& tmin, ShadeRec& sr) const{
+void Box::set_p0(const Point3D p0_){
+    p0 = p0_;
+}
+
+Point3D Box::get_p0() const{
+    return p0;
+}
+
+void Box::set_p1(const Point3D p1_){
+    p1 = p1_;
+    dimensions = p1 - Vector3D(p0);
+}
+
+Point3D Box::get_p1() const{
+    return p1;
+}
+
+void Box::set_dimensions(const Point3D dimensions_){
+    dimensions = dimensions_;
+    p1 = Point3D(p0 + dimensions);
+}
+
+Point3D Box::get_dimensions() const{
+    return dimensions;
+}
+
+bool Box::hit(const Ray& ray, float& t, ShadeRec& s) const{
     Point3D o(ray.o);
     Point3D d(ray.d.x, ray.d.y, ray.d.z); 
     Point3D t_min;
@@ -83,14 +122,14 @@ bool Box::hit(const Ray& ray, double& tmin, ShadeRec& sr) const{
     }
     if(t0 < t1 && t1 > kEpsilon){
         if(t0 > kEpsilon){
-            tmin = t0;
-            sr.normal = get_normal(face_in);
+            t = t0;
+            s.normal = get_normal(face_in);
         }
         else{
-            tmin = t1;
-            sr.normal = get_normal(face_out);
+            t = t1;
+            s.normal = get_normal(face_out);
         }
-        sr.local_hit_point = ray.o + tmin*ray.d;
+        s.local_hit_point = ray.o + t*ray.d;
         return true;
     }
     else{
