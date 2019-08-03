@@ -39,8 +39,6 @@ Sphere& Sphere::operator= (const Sphere& rhs)
 	return (*this);
 }
 
-Sphere::~Sphere(void) {}
-
 void Sphere::set_center(const Point3D& c) {
 	center = c;
 }

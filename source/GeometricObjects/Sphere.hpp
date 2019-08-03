@@ -14,7 +14,6 @@ public:
 	Sphere(Point3D center, double r);					// Constructor 
 	Sphere(const Sphere& sphere); 						// Copy constructor
 	virtual GeometricObject* clone(void) const;			// Virtual copy constructor
-	virtual	~Sphere(void); 								// Destructor
 
 	Sphere& operator= (const Sphere& sphere);			// assignment operator
 																				

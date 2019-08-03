@@ -8,7 +8,6 @@ public:
 	Plane();   												// default constructor
 	Plane(const Point3D& point, const Normal& normal);		// constructor	
 	Plane(const Plane& plane); 								// copy constructor
-	virtual ~Plane(void);   								// destructor
 
 	virtual GeometricObject* clone(void) const;				// virtual copy constructor
 	Plane& operator= (const Plane& rhs);					// assignment operator

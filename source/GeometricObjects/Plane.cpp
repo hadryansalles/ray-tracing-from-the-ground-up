@@ -38,9 +38,6 @@ Plane& Plane::operator= (const Plane& rhs)	{
 	return (*this);
 }
 
-Plane::~Plane(void)				
-{}
-
 bool Plane::hit(const Ray& ray, float& tmin, ShadeRec& sr) const {	
 	float t = (a - ray.o) * n / (ray.d * n); 
 														
