@@ -10,6 +10,7 @@
 #include "../GeometricObjects/Sphere.hpp"
 #include "../GeometricObjects/Box.hpp"
 #include "../GeometricObjects/Triangle.hpp"
+#include "../GeometricObjects/Disk.hpp"
 
 // Lights
 #include "../Light/Directional.hpp"

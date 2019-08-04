@@ -29,7 +29,7 @@ void World::build(){
 	ThinLens* pinhole_ptr = new ThinLens(Point3D(10, 40, 50), Point3D(0, -10, -100));
 	pinhole_ptr->set_distance(100);
 	pinhole_ptr->set_sampler(new Jittered(100, 100));
-	pinhole_ptr->set_lens_radius(1);
+	pinhole_ptr->set_lens_radius(0);
 	pinhole_ptr->set_focal_dist(60);
 	pinhole_ptr->compute_uvw();
 	set_camera(pinhole_ptr);
@@ -44,6 +44,7 @@ void World::build(){
     Plane* plane;
     Sphere* sphere;
 	Triangle* triangle;
+	Disk* disk;
 
 	float ka = 0.25;
 	float kd = 0.75;
@@ -58,18 +59,20 @@ void World::build(){
     add_object(box);
 
     box = new Box(Point3D(0, 0, -20), Point3D(30, 30, 30));
-    Matte* matte2 = matte->clone();
-	box->set_material(matte2);
-
+	box->set_material(matte->clone(brown));
 	add_object(box);
+
+	disk = new Disk(Point3D(0, 0, 0), Normal(-0.4, -0.4, 1), 25);
+	disk->set_material(matte->clone(blue));
+	add_object(disk);
 
     // box = new Box(Point3D(125, 0, -70), Point3D(30, 30, 30));
     // box->set_material(matte->clone(blue));
     // add_object(box);
 
-    // plane = new Plane(Point3D(0), Normal(0, 1, 0));
-    // plane->set_material(matte->clone(brown));
-    // add_object(plane);
+    plane = new Plane(Point3D(0), Normal(0, 1, 0));
+    plane->set_material(matte->clone(brown));
+    add_object(plane);
 
 	// triangle = new Triangle(Point3D(-20, 0, 0), Point3D(20, 0, 25), Point3D(0, 50, 0));
 	// triangle->set_material(matte->clone(red));
