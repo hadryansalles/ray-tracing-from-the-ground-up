@@ -1,11 +1,12 @@
 #pragma once
 
 #include "GeometricObject.hpp"
+#include "../Utilities/Debug.hpp"
 #include "../Materials/Material.hpp"
 
 class Compound: public GeometricObject {
 public:
-    Compound(Material* material_p = NULL);
+    Compound();
     Compound(const Compound& comp);
     
     Compound& operator= (const Compound& rhs);

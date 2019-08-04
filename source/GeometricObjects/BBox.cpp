@@ -14,7 +14,7 @@ BBox* BBox::clone() const{
     return (new BBox(*this));
 }
 
-BBox& BBox::operator= (BBox& rhs){
+BBox& BBox::operator= (const BBox& rhs){
     if(this == &rhs){
         return *this;
     }

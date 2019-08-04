@@ -14,7 +14,7 @@ public:
 		
 	virtual bool hit(const Ray& ray, float& t, ShadeRec& s) const = 0; 												 
 
-	virtual void set_material(Material* material);
+	virtual void set_material(Material* material_p);
 	Material* get_material() const;
 
 	virtual BBox get_bounding_box();

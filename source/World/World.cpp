@@ -12,7 +12,7 @@
 #include "../GeometricObjects/Triangle.hpp"
 #include "../GeometricObjects/Disk.hpp"
 #include "../GeometricObjects/OpenCylinder.hpp"
-
+#include "../GeometricObjects/Cylinder.hpp"
 
 // Lights
 #include "../Light/Directional.hpp"
