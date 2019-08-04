@@ -26,7 +26,7 @@ void World::build(){
 	RGBColor light_purple(0.65, 0.3, 1);
 	RGBColor dark_purple(0.5, 0, 1);
 
-	ThinLens* pinhole_ptr = new ThinLens(Point3D(10, 60, 40), Point3D(0, -30, -100));
+	ThinLens* pinhole_ptr = new ThinLens(Point3D(10, 60, 60), Point3D(0, -10, -100));
 	pinhole_ptr->set_distance(100);
 	pinhole_ptr->set_sampler(new Jittered(100, 100));
 	pinhole_ptr->set_lens_radius(0);
@@ -46,6 +46,7 @@ void World::build(){
 	Triangle* triangle;
 	Disk* disk;
 	OpenCylinder* openc;
+	Cylinder* cylinder;
 
 	float ka = 0.25;
 	float kd = 0.75;
@@ -55,29 +56,18 @@ void World::build(){
 	matte->set_kd(kd);
 	matte->set_cd(yellow);
 
-    box = new Box(Point3D(-75, 0, -10), Point3D(30, 30, 0.1));
-    box->set_material(matte);
-    add_object(box);
+	cylinder = new Cylinder(0, 25, 15);
+	cylinder->set_material(matte->clone(red));
+	add_object(cylinder);
 
-    box = new Box(Point3D(0, 0, -20), Point3D(30, 30, 30));
-	box->set_material(matte->clone(brown));
-	add_object(box);
-
-	disk = new Disk(Point3D(0, 0, 0), Normal(-0.4, -0.4, 1), 25);
-	disk->set_material(matte->clone(blue));
-	add_object(disk);
-
-	openc = new OpenCylinder(Point3D(30, 0, 0), 40, 25);
-	openc->set_material(matte->clone(dark_green));
-	add_object(openc);
-
-    // box = new Box(Point3D(125, 0, -70), Point3D(30, 30, 30));
-    // box->set_material(matte->clone(blue));
-    // add_object(box);
+	cylinder = cylinder->clone();
+	cylinder->set_y1(45);
+	cylinder->set_material(matte->clone(green));
+	add_object(cylinder);
 
     plane = new Plane(Point3D(0), Normal(0, 1, 0));
     plane->set_material(matte->clone(brown));
-    add_object(plane);
+    add_object(plane);	
 
 	// triangle = new Triangle(Point3D(-20, 0, 0), Point3D(20, 0, 25), Point3D(0, 50, 0));
 	// triangle->set_material(matte->clone(red));
