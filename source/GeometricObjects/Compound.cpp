@@ -1,7 +1,7 @@
 #include "Compound.hpp"
 
-Compound::Compound(Material* material_p)
-    : GeometricObject(material_p)
+Compound::Compound()
+    : GeometricObject()
 {}
 
 Compound::Compound(const Compound& comp)
@@ -29,6 +29,7 @@ Compound* Compound::clone() const{
 
 Compound::~Compound(){
     delete_objects();
+    material_ptr = NULL;
 }
 
 void Compound::add_object(GeometricObject* object_ptr){
@@ -41,14 +42,11 @@ void Compound::add_object(GeometricObject* object_ptr){
 }
 
 void Compound::set_material(Material* material_p){
-    if(material_p != NULL){
-        if(material_ptr != NULL){
-            delete material_ptr;
-        }
-        material_ptr = material_p;
-        for(int i = 0; i < objects.size(); i++){
-            objects[i]->set_material(material_ptr);
-        }
+    if(objects.size() > 0){
+        objects[0]->set_material(material_p);
+    }
+    for(int i = 1; i < objects.size(); i++){
+        objects[i]->set_material(material_p->clone());
     }
 }
 

@@ -35,20 +35,18 @@ BBox GeometricObject::get_bounding_box(){
 	return BBox();
 }
 
-GeometricObject::~GeometricObject (void) {
-	if(material_ptr){
+GeometricObject::~GeometricObject () {
+	if(material_ptr != NULL){
 		delete material_ptr;
 		material_ptr = NULL;
 	}
 }
 
-void GeometricObject::set_material(Material* material){
-	if(material != NULL){
-		if(material_ptr){
-			delete material_ptr;
-		}
-		material_ptr = material;
+void GeometricObject::set_material(Material* material_p){
+	if(material_ptr != NULL){
+		delete material_ptr;
 	}
+	material_ptr = material_p;
 }
 
 Material* GeometricObject::get_material() const{
