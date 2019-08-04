@@ -26,7 +26,7 @@ void World::build(){
 	RGBColor light_purple(0.65, 0.3, 1);
 	RGBColor dark_purple(0.5, 0, 1);
 
-	ThinLens* pinhole_ptr = new ThinLens(Point3D(10, 40, 50), Point3D(0, -10, -100));
+	ThinLens* pinhole_ptr = new ThinLens(Point3D(10, 60, 40), Point3D(0, -30, -100));
 	pinhole_ptr->set_distance(100);
 	pinhole_ptr->set_sampler(new Jittered(100, 100));
 	pinhole_ptr->set_lens_radius(0);
@@ -45,6 +45,7 @@ void World::build(){
     Sphere* sphere;
 	Triangle* triangle;
 	Disk* disk;
+	OpenCylinder* openc;
 
 	float ka = 0.25;
 	float kd = 0.75;
@@ -65,6 +66,10 @@ void World::build(){
 	disk = new Disk(Point3D(0, 0, 0), Normal(-0.4, -0.4, 1), 25);
 	disk->set_material(matte->clone(blue));
 	add_object(disk);
+
+	openc = new OpenCylinder(Point3D(30, 0, 0), 40, 25);
+	openc->set_material(matte->clone(dark_green));
+	add_object(openc);
 
     // box = new Box(Point3D(125, 0, -70), Point3D(30, 30, 30));
     // box->set_material(matte->clone(blue));

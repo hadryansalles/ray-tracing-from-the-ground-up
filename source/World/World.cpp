@@ -11,6 +11,8 @@
 #include "../GeometricObjects/Box.hpp"
 #include "../GeometricObjects/Triangle.hpp"
 #include "../GeometricObjects/Disk.hpp"
+#include "../GeometricObjects/OpenCylinder.hpp"
+
 
 // Lights
 #include "../Light/Directional.hpp"
