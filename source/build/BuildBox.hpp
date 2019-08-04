@@ -67,7 +67,7 @@ void World::build(){
 	disk->set_material(matte->clone(blue));
 	add_object(disk);
 
-	openc = new OpenCylinder(Point3D(30, 0, 0), 40, 25);
+	openc = new OpenCylinder(Point3D(30, 40, 0), -40, 25);
 	openc->set_material(matte->clone(dark_green));
 	add_object(openc);
 

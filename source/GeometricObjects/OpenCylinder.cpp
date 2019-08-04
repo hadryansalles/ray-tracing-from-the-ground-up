@@ -50,8 +50,8 @@ bool OpenCylinder::hit(const Ray& ray, float& t, ShadeRec& s) const{
         myt = (-b -sqrt(disc)) / (2.0*a);
         Point3D hit_p = o + d*myt;
         if(myt > kEpsilon){
-            if(hit_p.y > begin.y 
-            && hit_p.y < (begin.y+height)){
+            if(hit_p.y > min(begin.y, begin.y+height) 
+            && hit_p.y < max(begin.y, begin.y+height)){
                 t = myt;
                 s.normal = Normal(hit_p.x/radius, 0.0, hit_p.z/radius);
                 if (-ray.d * s.normal < 0.0) s.normal = -s.normal;
@@ -62,8 +62,8 @@ bool OpenCylinder::hit(const Ray& ray, float& t, ShadeRec& s) const{
         myt = (-b + sqrt(disc)) / (2.0*a);
         hit_p = o + d*myt;
         if(t > kEpsilon){
-            if(hit_p.y > begin.y 
-            && hit_p.y < (begin.y+height)){
+            if(hit_p.y > min(begin.y, begin.y+height) 
+            && hit_p.y < max(begin.y, begin.y+height)){
                 t = myt;
                 s.normal = Normal(hit_p.x/radius, 0.0, hit_p.z/radius);
                 if (-ray.d * s.normal < 0.0){
