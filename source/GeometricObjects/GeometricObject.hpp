@@ -17,7 +17,8 @@ public:
 	virtual void set_material(Material* material_p);
 	Material* get_material() const;
 
-	virtual BBox get_bounding_box();
+	virtual BBox get_bounding_box() const; 
+	virtual void add_object(GeometricObject* object_ptr);
 
 protected:
 	mutable Material* material_ptr;

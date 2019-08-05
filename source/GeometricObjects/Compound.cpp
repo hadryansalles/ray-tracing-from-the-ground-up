@@ -23,6 +23,7 @@ Compound& Compound::operator= (const Compound& rhs){
         add_object(rhs.objects[i]->clone());
     }
 }
+
 Compound* Compound::clone() const{
     return (new Compound(*this));
 }

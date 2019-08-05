@@ -31,7 +31,7 @@ GeometricObject& GeometricObject::operator= (const GeometricObject& rhs) {
 	return (*this);
 }
 
-BBox GeometricObject::get_bounding_box(){
+BBox GeometricObject::get_bounding_box() const {
 	return BBox();
 }
 
@@ -51,4 +51,7 @@ void GeometricObject::set_material(Material* material_p){
 
 Material* GeometricObject::get_material() const{
 	return material_ptr;
+}
+
+void GeometricObject::add_object(GeometricObject* object_ptr){
 }
