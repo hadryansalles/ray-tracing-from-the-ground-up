@@ -37,7 +37,7 @@ void World::build(){
 	PointLight* point_light = new PointLight(Vector3D(10, 20, 3), 6);
 	add_light(point_light);
 
-    int num_spheres = 10;
+    int num_spheres = 1000;
     float volume = 0.1 / num_spheres;
     float radius = pow(0.75*volume/3.1415, 0.33);
     Grid* grid_ptr = new Grid;
@@ -56,6 +56,4 @@ void World::build(){
     }
     grid_ptr->setup_cells();
     add_object(grid_ptr);
-
-	delete_objects();
 }
