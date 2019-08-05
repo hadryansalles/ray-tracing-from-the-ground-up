@@ -13,6 +13,7 @@
 #include "../GeometricObjects/Disk.hpp"
 #include "../GeometricObjects/OpenCylinder.hpp"
 #include "../GeometricObjects/Cylinder.hpp"
+#include "../GeometricObjects/Grid.hpp"
 
 // Lights
 #include "../Light/Directional.hpp"
@@ -43,7 +44,8 @@
 //#include "../build/BuildSpheresQueue.hpp"
 //#include "../build/BuildSingleSphereLight.hpp"
 //#include "../build/BuildShadedTest.hpp"
-#include "../build/BuildBox.hpp"
+//#include "../build/BuildBox.hpp"
+#include "../build/BuildSphereGrid.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildBBCoverPicLight.hpp"
 //#include "../build/BuildMultipleObjects.hpp"
