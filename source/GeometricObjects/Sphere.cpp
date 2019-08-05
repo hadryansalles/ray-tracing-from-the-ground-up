@@ -87,3 +87,9 @@ bool Sphere::hit(const Ray& ray, float& tmin, ShadeRec& sr) const {
 	
 	return (false);
 }
+
+BBox Sphere::get_bounding_box() const {
+	Point3D p0(center.x - radius, center.y - radius, center.z - radius);
+	Point3D p1(center.x + radius, center.y + radius, center.z + radius);
+	return (BBox(p0, p1));
+}
