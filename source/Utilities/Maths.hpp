@@ -15,3 +15,7 @@ inline float rand_float(){
 inline int rand_int(){
 	return (int) rand();
 }
+
+inline float clamp(float x, float min, float max){
+	return (x < min ? min : (x > max ? max : x));
+}
