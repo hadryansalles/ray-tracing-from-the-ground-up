@@ -12,7 +12,8 @@ public:
     virtual ~BBox();
 
     virtual bool hit(const Ray& ray) const;
-    
+    virtual bool inside(const Point3D p) const;
+
     Point3D p0;
     Point3D p1;
 };
