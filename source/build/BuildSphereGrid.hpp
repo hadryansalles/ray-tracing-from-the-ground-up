@@ -5,7 +5,7 @@ void World::build(){
 	vp.set_hres(800);
 	vp.set_vres(800);
 	vp.set_pixel_size(1);
-	vp.set_sampler(new Jittered(4));
+	vp.set_sampler(new NRooks(4));
 
 	background_color = black;
 
