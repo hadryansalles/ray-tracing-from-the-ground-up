@@ -3,7 +3,6 @@
 #include "FlatMeshTriangle.hpp"
 #include "SmoothMeshTriangle.hpp"
 #include "Triangle.hpp"
-#include "../Utilities/ply.hpp"
 
 typedef enum {
 	flat, 
@@ -395,6 +394,8 @@ Point3D Grid::max_coordinates(){
     return p1;
 }
 
+/*
+
 void Grid::compute_mesh_normals() {
 	mesh_ptr->normals.reserve(mesh_ptr->num_vertices);
 	
@@ -616,3 +617,4 @@ void Grid::read_smooth_triangles(char* file_name) {
   	read_ply_file(file_name, smooth);
   	compute_mesh_normals();
 }
+*/
