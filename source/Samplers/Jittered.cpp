@@ -4,7 +4,7 @@ Jittered::Jittered(int samples, int sets) :
     Sampler(samples, sets)
 { }
 
-Sampler* Jittered::clone(){
+Sampler* Jittered::clone() const{
     return (new Jittered(*this));
 }
 

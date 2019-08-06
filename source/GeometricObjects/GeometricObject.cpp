@@ -55,3 +55,10 @@ Material* GeometricObject::get_material() const{
 
 void GeometricObject::add_object(GeometricObject* object_ptr){
 }
+
+Normal GeometricObject::get_normal() const{
+	return Normal();
+} 
+Normal GeometricObject::get_normal(const Point3D& p){
+	return Normal();
+} 

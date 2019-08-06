@@ -41,6 +41,16 @@ Triangle* Triangle::clone() const {
     return (new Triangle(*this));
 }
 
+BBox Triangle::get_bounding_box() const {
+    double delta = 0.00001;
+    return (BBox(Point3D(min(min(v0.x, v1.x), v2.x) - delta, 
+                         min(min(v0.y, v1.y), v2.y) - delta,
+                         min(min(v0.z, v1.z), v2.z) - delta),
+                 Point3D(max(max(v0.x, v1.x), v2.x) + delta,
+                         max(max(v0.y, v1.y), v2.y) + delta,
+                         max(max(v0.z, v1.z), v2.z) + delta)));
+}
+
 bool Triangle::hit(const Ray& ray, float& t, ShadeRec& s) const {
     float a = v0.x - v1.x;
     float b = v0.x - v2.x;
@@ -94,4 +104,9 @@ bool Triangle::hit(const Ray& ray, float& t, ShadeRec& s) const {
     s.normal = normal;
     s.local_hit_point = ray.o + t*ray.d;
     return true;
+}
+
+void Triangle::compute_normal(){
+    normal = (v1 - v0) ^ (v2 - v0);  
+	normal.normalize();
 }

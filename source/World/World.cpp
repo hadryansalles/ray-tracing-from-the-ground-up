@@ -14,10 +14,16 @@
 #include "../GeometricObjects/OpenCylinder.hpp"
 #include "../GeometricObjects/Cylinder.hpp"
 #include "../GeometricObjects/Grid.hpp"
+#include "../GeometricObjects/SmoothMeshTriangle.hpp"
+#include "../GeometricObjects/FlatMeshTriangle.hpp"
 
 // Lights
 #include "../Light/Directional.hpp"
 #include "../Light/PointLight.hpp"
+
+// Samplers
+#include "../Samplers/MultiJittered.hpp"
+#include "../Samplers/NRooks.hpp"
 
 // tracers
 //#include "../Tracers/MultipleObjects.hpp"
@@ -46,6 +52,7 @@
 //#include "../build/BuildShadedTest.hpp"
 //#include "../build/BuildBox.hpp"
 #include "../build/BuildSphereGrid.hpp"
+//#include "../build/BuildSimpleMesh.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildBBCoverPicLight.hpp"
 //#include "../build/BuildMultipleObjects.hpp"

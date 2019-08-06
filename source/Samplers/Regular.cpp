@@ -4,7 +4,7 @@ Regular::Regular(int samples, int sets) :
     Sampler(samples, sets)
 { }
 
-Sampler* Regular::clone(){
+Sampler* Regular::clone() const {
     return (new Regular(*this));
 }
 void Regular::generate_samples(){

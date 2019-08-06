@@ -19,6 +19,9 @@ public:
 
 	virtual BBox get_bounding_box() const; 
 	virtual void add_object(GeometricObject* object_ptr);
+	
+	virtual Normal get_normal() const; 
+	virtual Normal get_normal(const Point3D& p); 
 
 protected:
 	mutable Material* material_ptr;

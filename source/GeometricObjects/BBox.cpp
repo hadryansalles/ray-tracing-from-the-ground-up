@@ -84,8 +84,7 @@ bool BBox::hit(const Ray& ray) const{
 }
 
 bool BBox::inside(const Point3D p) const {
-    	// return ((p.x > p0.x && p.x < p1.x) 
-        //      && (p.y > p0.y && p.y < p1.y) 
-        //      && (p.z > p0.z && p.z < p1.z));
-    return ((p.x > p0.x && p.x < p1.x) && (p.y > p0.y && p.y < p1.y) && (p.z > p0.z && p.z < p1.z));       
+    return ((p.x > p0.x && p.x < p1.x) 
+         && (p.y > p0.y && p.y < p1.y) 
+         && (p.z > p0.z && p.z < p1.z));       
 }

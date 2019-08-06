@@ -8,7 +8,7 @@ Sampler::Sampler(int samples, int sets) :
     this->samples.reserve(num_samples*num_sets);
 }
 
-Sampler::Sampler(Sampler& samp):
+Sampler::Sampler(const Sampler& samp):
     num_samples(samp.num_samples),
     num_sets(samp.num_sets),
     count(samp.count),
@@ -101,4 +101,24 @@ void Sampler::map_samples_to_unit_disk(){
         disk_samples[j].y = r * sin(phi);
     }
     samples.erase(samples.begin(), samples.end());
+}
+
+void Sampler::shuffle_y_coordinates() {
+	for (int p = 0; p < num_sets; p++)
+		for (int i = 0; i <  num_samples - 1; i++) {
+			int target = rand_int() % num_samples + p * num_samples;
+			float temp = samples[i + p * num_samples + 1].y;
+			samples[i + p * num_samples + 1].y = samples[target].y;
+			samples[target].y = temp;
+		}	
+}
+
+void Sampler::shuffle_x_coordinates() {
+	for (int p = 0; p < num_sets; p++)
+		for (int i = 0; i <  num_samples - 1; i++) {
+			int target = rand_int() % num_samples + p * num_samples;
+			float temp = samples[i + p * num_samples + 1].x;
+			samples[i + p * num_samples + 1].x = samples[target].x;
+			samples[target].x = temp;
+		}
 }

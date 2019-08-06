@@ -8,9 +8,9 @@
 class Sampler{
 public:
     Sampler(int samples = 1, int sets = 50);
-    Sampler(Sampler& samp);
+    Sampler(const Sampler& samp);
     Sampler& operator=(const Sampler& rhs);
-    virtual Sampler* clone() = 0;
+    virtual Sampler* clone() const = 0;
 
     virtual ~Sampler();
 
@@ -34,4 +34,7 @@ protected:
 
     std::vector<Point2D> samples;
     std::vector<Point2D> disk_samples;
+
+    void shuffle_x_coordinates();
+    void shuffle_y_coordinates();
 };
