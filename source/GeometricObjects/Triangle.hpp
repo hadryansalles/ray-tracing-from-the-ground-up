@@ -14,6 +14,8 @@ public:
     Triangle& operator=(const Triangle& rhs);
     Triangle* clone() const;
 
+    void compute_normal();
+
     virtual bool hit(const Ray& ray, float& t, ShadeRec& s) const; 
     virtual BBox get_bounding_box() const;
 };

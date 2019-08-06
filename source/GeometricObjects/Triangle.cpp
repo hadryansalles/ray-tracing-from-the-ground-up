@@ -105,3 +105,8 @@ bool Triangle::hit(const Ray& ray, float& t, ShadeRec& s) const {
     s.local_hit_point = ray.o + t*ray.d;
     return true;
 }
+
+void Triangle::compute_normal(){
+    normal = (v1 - v0) ^ (v2 - v0);  
+	normal.normalize();
+}
