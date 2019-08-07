@@ -62,3 +62,7 @@ Normal GeometricObject::get_normal() const{
 Normal GeometricObject::get_normal(const Point3D& p){
 	return Normal();
 } 
+
+bool GeometricObject::shadow_hit(const Ray& ray, float& tmin) const { 
+	return false;
+}

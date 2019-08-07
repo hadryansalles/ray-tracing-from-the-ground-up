@@ -11,6 +11,7 @@ public:
 
 	virtual GeometricObject* clone(void) const;				// virtual copy constructor
 	Plane& operator= (const Plane& rhs);					// assignment operator
+	virtual bool shadow_hit(const Ray& ray, float& tmin) const;
 	virtual bool hit(const Ray& ray, float& tmin, ShadeRec& sr) const;
 	
 private:

@@ -12,7 +12,8 @@ public:
 	virtual GeometricObject* clone(void) const = 0;		// virtual copy constructor
 	virtual ~GeometricObject ();						// destructor
 		
-	virtual bool hit(const Ray& ray, float& t, ShadeRec& s) const = 0; 												 
+	virtual bool hit(const Ray& ray, float& t, ShadeRec& s) const = 0; 	
+	virtual bool shadow_hit(const Ray& ray, float& tmin) const;											 
 
 	virtual void set_material(Material* material_p);
 	Material* get_material() const;
