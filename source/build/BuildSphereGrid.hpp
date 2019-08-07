@@ -10,7 +10,7 @@ void World::build(){
 	background_color = black;
 
 	Ambient* ambient_ptr = new Ambient;
-	ambient_ptr->set_ls(1);
+	ambient_ptr->scale_radiance(1);
 	set_ambient_light(ambient_ptr);
 
 	tracer_ptr = new RayCast(this);
@@ -42,9 +42,10 @@ void World::build(){
     float radius = pow(0.75*volume/3.1415, 0.33);
     Grid* grid_ptr = new Grid;
     for(int i = 0; i < num_spheres; i++){
-        Matte* matte_ptr = new Matte;
+        Phong* matte_ptr = new Phong;
         matte_ptr->set_ka(0.25);
         matte_ptr->set_kd(0.75);
+		matte_ptr->set_ks(0.5);
         matte_ptr->set_cd(RGBColor(rand_float(), rand_float(), rand_float()));
 
         Sphere* sphere_ptr = new Sphere;

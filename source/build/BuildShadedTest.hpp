@@ -13,7 +13,7 @@ void World::build() {
 	// constructor, and can therefore be left out
 	
 	Ambient* ambient_ptr = new Ambient;
-	ambient_ptr->set_ls(0.3);
+	ambient_ptr->scale_radiance(0.3);
 	set_ambient_light(ambient_ptr); 
 
 	background_color = black;			// default color - this can be left out
@@ -22,7 +22,7 @@ void World::build() {
 	// camera
 	
 	ThinLens* pinhole_ptr = new ThinLens(Point3D(0, 0, 500), Point3D(0));
-	pinhole_ptr->set_distance(600.0);
+	pinhole_ptr->set_view_distance(600.0);
 	pinhole_ptr->set_sampler(new Jittered(100, 100));
 	pinhole_ptr->set_lens_radius(10.0);
 	pinhole_ptr->set_focal_dist(500);
