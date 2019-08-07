@@ -12,7 +12,7 @@ Pinhole::Pinhole(Point3D eye_p, Point3D lookat):
     zoom(1)
 {}
 
-void Pinhole::set_distance(const float dist){
+void Pinhole::set_view_distance(const float dist){
     d = dist;
 }
 
@@ -36,6 +36,7 @@ void Pinhole::render_scene(World& w){
     Point2D sp;
     Point2D pp;
     int depth = 0;
+	int n = (int)sqrt(vp->num_samples);
 
     w.openWindow(vp->hres, vp->vres);
     vp->s /= zoom;
@@ -57,12 +58,13 @@ void Pinhole::render_scene(World& w){
 			// ANTI ALIASING
 			L = black;
 			debug_print("Getting anti aliasing samples.\n");
-			for(int j = 0; j < vp->num_samples; j++) {
-				sp = vp->sampler_ptr->sample_unit_square();
-				pp.x = vp->s*(c - 0.5*vp->hres + sp.x);
-				pp.y = vp->s*(r - 0.5*vp->vres + sp.y);
-				ray.d = ray_direction(pp); 
-				L += w.tracer_ptr->trace_ray(ray);
+			for(int p = 0; p < n; p++) {
+				for(int q = 0; q < n; q++){
+					pp.x = vp->s*(c - 0.5*vp->hres + (q+0.5)/n);
+					pp.y = vp->s*(r - 0.5*vp->vres + (p+0.5)/n);
+					ray.d = ray_direction(pp); 
+					L += w.tracer_ptr->trace_ray(ray);
+				}
 			}
 			debug_print("Anti aliasing samples get.\n");
 			L /= vp->num_samples;
