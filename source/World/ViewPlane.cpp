@@ -53,12 +53,17 @@ void ViewPlane::set_vres(const int v_res) {
 	vres = v_res;
 }
 
-void ViewPlane::set_num_samples(const int samples){
+void ViewPlane::set_samples(const int samples){
+	if(sampler_ptr != NULL){
+		delete sampler_ptr;
+		sampler_ptr = NULL;
+	}
 	if(samples != 1){
-		if(sampler_ptr != NULL){
-			delete sampler_ptr;
-		}
-		sampler_ptr = new Jittered(samples);
+		sampler_ptr = new MultiJittered(samples);
+		this->num_samples = samples;
+	}
+	else{
+		sampler_ptr = new Regular(1);
 		this->num_samples = samples;
 	}
 }

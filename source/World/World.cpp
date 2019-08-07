@@ -20,6 +20,7 @@
 // Lights
 #include "../Light/Directional.hpp"
 #include "../Light/PointLight.hpp"
+#include "../Light/Ambient.hpp"
 
 // Samplers
 #include "../Samplers/MultiJittered.hpp"
@@ -37,6 +38,7 @@
 
 // Materials
 #include "../Materials/Matte.hpp"
+#include "../Materials/Phong.hpp"
 
 // utilities
 #include "../Utilities/Vector3D.hpp"
@@ -51,7 +53,8 @@
 //#include "../build/BuildSingleSphereLight.hpp"
 //#include "../build/BuildShadedTest.hpp"
 //#include "../build/BuildBox.hpp"
-#include "../build/BuildSphereGrid.hpp"
+//#include "../build/BuildSphereGrid.hpp"
+#include "../build/BuildGlossy.hpp"
 //#include "../build/BuildSimpleMesh.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildBBCoverPicLight.hpp"
@@ -59,13 +62,17 @@
 //#include "../build/BuildSinusoid.hpp"
 //#include "../build/BuildHorizontalPlane.hpp"
 
-World::World()
-	:  	background_color(black),
-		tracer_ptr(NULL),
-		window(NULL),
-		camera(new Orthographic()),
-		ambient_ptr(new Ambient())
-{}
+World::World() :  	
+	background_color(black),
+	tracer_ptr(NULL),
+	window(NULL),
+	camera(new Orthographic()),
+	ambient_ptr(NULL)
+{	
+	Ambient* ambient = new Ambient;
+	ambient->scale_radiance(0);
+	ambient_ptr = ambient;
+}
 
 World::~World() {		
 	if(tracer_ptr) {
@@ -90,8 +97,9 @@ World::~World() {
 RGBColor World::max_to_one(const RGBColor& c) const  {
 	float max_value = max(c.r, max(c.g, c.b));
 	
-	if (max_value > 1.0)
+	if (max_value > 1.0){
 		return (c / max_value);
+	}
 	else
 		return (c);
 }

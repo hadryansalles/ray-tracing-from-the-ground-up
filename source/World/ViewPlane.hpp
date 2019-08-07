@@ -2,6 +2,7 @@
 
 #include "../Samplers/Regular.hpp"
 #include "../Samplers/Jittered.hpp"
+#include "../Samplers/MultiJittered.hpp"
 
 class ViewPlane {
 public:
@@ -24,7 +25,7 @@ public:
 	void set_hres(const int h_res);
 	void set_vres(const int v_res);
 	void set_pixel_size(const float size);
-	void set_num_samples(const int samples);
+	void set_samples(const int samples);
 	void set_sampler(Sampler* sampler_p);
 	void set_gamma(const float g);
 	void set_gamut_display(const bool show);				
