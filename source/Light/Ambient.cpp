@@ -53,3 +53,7 @@ void Ambient::set_color(const RGBColor& c) {
 void Ambient::set_color(const float r, const float g, const float b) {
 	color.r = r; color.g = g; color.b = b;
 }
+
+bool Ambient::in_shadow(const Ray& ray, const ShadeRec& sr) const {
+	return false;
+}

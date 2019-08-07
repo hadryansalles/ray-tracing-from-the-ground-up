@@ -15,7 +15,6 @@ Light& Light::operator= (const Light& rhs) {
 	return (*this);
 }
 
-
 Light::~Light()
 {}
 
@@ -25,4 +24,8 @@ bool Light::get_shadows() const{
 
 void Light::set_shadows(const bool shadows_){
     shadows = shadows_;
+}
+
+bool Light::in_shadow(const Ray& ray, const ShadeRec& sr) const {
+    return false;
 }

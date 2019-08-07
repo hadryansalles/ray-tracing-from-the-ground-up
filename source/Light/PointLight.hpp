@@ -13,6 +13,8 @@ public:
     Vector3D get_direction(ShadeRec& sr);
     RGBColor L(ShadeRec& sr);
 
+    virtual bool in_shadow(const Ray& ray, const ShadeRec& sr) const;
+
 private:
     Vector3D location;
 };

@@ -20,6 +20,8 @@ public:
     
     virtual RGBColor L(ShadeRec& s);
 
+    virtual bool in_shadow(const Ray& ray, const ShadeRec& sr) const;
+
 protected:
     float		ls;
     RGBColor	color;

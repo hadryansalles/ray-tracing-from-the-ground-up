@@ -20,6 +20,8 @@ public:
     virtual Vector3D get_direction(ShadeRec& sr) = 0;
     virtual RGBColor L(ShadeRec& sr) = 0;
 
+    virtual bool in_shadow(const Ray& ray, const ShadeRec& sr) const;
+
 protected:
     bool shadows;
 };
