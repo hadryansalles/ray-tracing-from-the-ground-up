@@ -2,24 +2,25 @@
 
 #include "Light.hpp"
 
-class Ambient:public Light{
+class Ambient: public Light {
 public:
-    Ambient(float ls_ = 1.0, RGBColor color_ = 1.0, bool shadows_ = false);
-    Ambient(const Ambient& ambient);
+    Ambient();   							
+    Ambient(const Ambient& a); 					 
+    virtual Light* clone() const;	
+    Ambient& operator= (const Ambient& rhs);									
+    virtual ~Ambient();
+            
+    void scale_radiance(const float b);
 
-    virtual Light* clone() const;
-    Ambient& operator=(const Ambient& rhs);
-
-    float get_ls() const;
-    void set_ls(const float ls_);
-
-    RGBColor get_color() const;
-    void set_color(const RGBColor color_);
-
-    virtual Vector3D get_direction(ShadeRec& sr);
-    virtual RGBColor L(ShadeRec& sr);
+    void set_color(const float c);
+    void set_color(const RGBColor& c);
+    void set_color(const float r, const float g, const float b); 
+    
+    virtual Vector3D get_direction(ShadeRec& s); 
+    
+    virtual RGBColor L(ShadeRec& s);
 
 protected:
-    float ls;
-    RGBColor color;
+    float		ls;
+    RGBColor	color;
 };

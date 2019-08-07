@@ -1,15 +1,15 @@
 #include "Ambient.hpp"
 
-Ambient::Ambient(float ls_, RGBColor color_, bool shadows_):
-    Light(shadows_),
-    ls(ls_),
-    color(color_)
+Ambient::Ambient ()
+	: 	Light(),
+		ls(1.0),
+		color(1.0)			
 {}
 
-Ambient::Ambient(const Ambient& ambient):
-    Light(ambient.get_shadows()),
-    ls(ambient.get_ls()),
-    color(ambient.get_color())    
+Ambient::Ambient (const Ambient& a)
+	: 	Light(a),
+		ls(a.ls),
+		color(a.color) 		
 {}
 
 Light* Ambient::clone() const {
@@ -28,26 +28,28 @@ Ambient& Ambient::operator= (const Ambient& rhs) {
 	return (*this);
 }
 
-float Ambient::get_ls() const{
-    return ls;
+Ambient::~Ambient () {}
+
+Vector3D Ambient::get_direction(ShadeRec& s) {
+	return (Vector3D(0.0));
 }
 
-void Ambient::set_ls(const float ls_){
-    ls = ls_;
+RGBColor Ambient::L(ShadeRec& sr) {	
+    return (ls * color);
 }
 
-RGBColor Ambient::get_color() const{
-    return color;
+void Ambient::scale_radiance(const float b) { 
+	ls = b;
 }
 
-void Ambient::set_color(const RGBColor color_){
-    color = color_;
+void Ambient::set_color(const float c) {
+	color.r = c; color.g = c; color.b = c;
 }
 
-Vector3D Ambient::get_direction(ShadeRec& sr){
-    return (Vector3D(0.0));
+void Ambient::set_color(const RGBColor& c) {
+	color = c;
 }
 
-RGBColor Ambient::L(ShadeRec& sr){
-    return (ls*color);
+void Ambient::set_color(const float r, const float g, const float b) {
+	color.r = r; color.g = g; color.b = b;
 }

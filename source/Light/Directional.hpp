@@ -1,24 +1,31 @@
 #pragma once
 
-#include "Ambient.hpp"
+#include "../Light/Light.hpp"
 #include "../Utilities/Vector3D.hpp"
 #include "../Utilities/RGBColor.hpp"
 
-#include "../World/World.hpp"
+#include "../World/World.hpp"			
 #include "../Utilities/ShadeRec.hpp"
 
-class Directional : public Ambient{
+class Directional: public Light {
 public:
-    Directional(Vector3D dir_ = Vector3D(0, 1, 0), const float ls_ = 1.0, const RGBColor color_ = RGBColor(1), bool shadows_ = false);
-    Directional(const Directional& dl);
-    virtual Light* clone() const;
-    Directional& operator=(const Directional& rhs);
-
-    void set_direction(Vector3D d);
-    Vector3D get_direction(ShadeRec& sr);   
-
-    virtual RGBColor L(ShadeRec& sr);
-
-protected:
-    Vector3D dir;
+    Directional(void);   							
+    Directional(const Directional& dl); 
+    virtual Light* clone(void) const;			
+    Directional& operator= (const Directional& rhs); 
+    virtual	~Directional(void); 
+            
+    void scale_radiance(const float b);
+    void set_color(const float c);
+    void set_color(const RGBColor& c);
+    void set_color(const float r, const float g, const float b); 		
+    void set_direction(Vector3D d);						
+    void set_direction(float dx, float dy, float dz);
+    virtual Vector3D get_direction(ShadeRec& sr);
+    virtual RGBColor L(ShadeRec& sr);	
+    
+private:
+    float		ls;			
+    RGBColor	color;
+    Vector3D	dir;		// direction the light comes from
 };
