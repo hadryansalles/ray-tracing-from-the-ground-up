@@ -6,10 +6,10 @@ Matte::Matte(Lambertian* ambient_brdf_, Lambertian* diffuse_brdf_):
     Material()
 {
     if(ambient_brdf_ == NULL){
-        ambient_brdf = new Lambertian();
+        ambient_brdf = new Lambertian(0,25);
     }
     if(diffuse_brdf_ == NULL){
-        diffuse_brdf = new Lambertian();
+        diffuse_brdf = new Lambertian(0,75);
     }
 }
 
