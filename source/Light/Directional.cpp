@@ -67,3 +67,13 @@ void Directional::set_direction(float dx, float dy, float dz) {
 	dir.x = dx; dir.y = dy; dir.z = dz;
 	dir.normalize();
 }
+
+bool Directional::in_shadow(const Ray& ray, const ShadeRec& sr) const {
+	float t;
+	int num_objects = sr.w.objects.size();
+	for(int j = 0; j < num_objects; j++){
+		if(sr.w.objects[j]->shadow_hit(ray, t)){
+			return true;
+		}
+	}
+}
