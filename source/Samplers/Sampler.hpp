@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "../Utilities/Point2D.hpp"
+#include "../Utilities/Point3D.hpp"
 #include "../Utilities/Maths.hpp"
 #include "../Utilities/Constants.hpp"
 
@@ -21,10 +22,11 @@ public:
     void set_num_sets(int sets);
 
     Point2D sample_unit_square();
-    virtual void generate_samples() = 0;
-
+    
     void map_samples_to_unit_disk();
+    void map_samples_to_hemisphere(const float e);
     Point2D sample_unit_disk();
+    Point3D sample_hemisphere();
     
 protected:
     int num_samples;
@@ -34,7 +36,9 @@ protected:
 
     std::vector<Point2D> samples;
     std::vector<Point2D> disk_samples;
-
+    std::vector<Point3D> hemisphere_samples;
+    
+    virtual void generate_samples() = 0;
     void shuffle_x_coordinates();
     void shuffle_y_coordinates();
 };

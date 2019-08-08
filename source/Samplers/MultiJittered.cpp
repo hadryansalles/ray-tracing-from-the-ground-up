@@ -1,4 +1,5 @@
 #include "MultiJittered.hpp"
+#include <stdio.h>
 
 MultiJittered::MultiJittered(const int num_samples, const int m)
 	: Sampler(num_samples, m) {
@@ -15,6 +16,7 @@ MultiJittered& MultiJittered::operator= (const MultiJittered& rhs) {
 		return (*this);
 	}
 	Sampler::operator=(rhs);
+	generate_samples();
 	return (*this);
 }
 
@@ -25,7 +27,7 @@ MultiJittered* MultiJittered::clone() const {
 MultiJittered::~MultiJittered() 
 {}
 
-void MultiJittered::generate_samples() {		
+void MultiJittered::generate_samples() {
 	int n = (int)sqrt((float)num_samples);
 	float subcell_width = 1.0 / ((float) num_samples);
 	
