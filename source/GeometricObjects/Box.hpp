@@ -12,6 +12,7 @@ public:
     Box& operator= (Box& rhs);
 
     virtual bool hit(const Ray& ray, float& t, ShadeRec& s) const;
+    virtual bool shadow_hit(const Ray& ray, float& tmin) const;
     Normal get_normal(const int face_hit) const;
 
     void set_p0(const Point3D p0_);

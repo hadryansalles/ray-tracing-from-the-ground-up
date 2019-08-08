@@ -1,4 +1,5 @@
 #include "Plane.hpp"
+#include <stdio.h>
 
 const double Plane::kEpsilon = 0.001;
 

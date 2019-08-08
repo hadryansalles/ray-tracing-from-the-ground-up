@@ -13,7 +13,8 @@ public:
     virtual OpenCylinder* clone() const;
 
     virtual bool hit(const Ray& ray, float& t, ShadeRec& s) const;
-
+    virtual bool shadow_hit(const Ray& ray, float& tmin) const;
+    
     void set_y0(const float y0_);
     float get_y0() const;  
 

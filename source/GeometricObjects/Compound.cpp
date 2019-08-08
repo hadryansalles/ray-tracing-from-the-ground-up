@@ -29,6 +29,10 @@ Compound* Compound::clone() const{
 }
 
 Compound::~Compound(){
+    for(int i = 0; i < objects.size(); i++){
+        if(objects[i]){
+        }
+    }
     delete_objects();
     material_ptr = NULL;
 }
@@ -83,4 +87,15 @@ bool Compound::hit(const Ray& ray, float& t, ShadeRec& s) const {
         s.local_hit_point = local_hit_point;
     }
     return hit;
+}
+
+
+bool Compound::shadow_hit(const Ray& ray, float& tmin) const{
+    int num_objects = objects.size();
+    for(int i = 0; i < num_objects; i++){
+        if(objects[i]->shadow_hit(ray, tmin)){
+            return true;
+        }
+    }
+    return false;
 }

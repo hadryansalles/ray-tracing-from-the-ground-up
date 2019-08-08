@@ -17,5 +17,6 @@ public:
     void compute_normal();
 
     virtual bool hit(const Ray& ray, float& t, ShadeRec& s) const; 
+    virtual bool shadow_hit(const Ray& ray, float& tmin) const;
     virtual BBox get_bounding_box() const;
 };

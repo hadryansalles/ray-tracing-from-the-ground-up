@@ -75,6 +75,36 @@ bool OpenCylinder::hit(const Ray& ray, float& t, ShadeRec& s) const{
     return false;
 }
 
+bool OpenCylinder::shadow_hit(const Ray& ray, float& tmin) const{
+    Point3D d(ray.d.x, ray.d.y, ray.d.z);
+    Point3D o(ray.o);
+
+    float a = d.x*d.x + d.z*d.z;
+    float b = 2.0*(o.x*d.x + o.z*d.z);
+    float c = o.x*o.x + o.z*o.z - radius*radius;
+    float disc = b*b - 4.0*a*c;
+    float myt;
+
+    if(disc >= 0){
+        myt = (-b -sqrt(disc)) / (2.0*a);
+        Point3D hit_p = o + d*myt;
+        if(myt > kEpsilon){
+            if(hit_p.y > y0 && hit_p.y < y1){
+                tmin = myt;
+                return true;
+            }
+        }   
+        myt = (-b + sqrt(disc)) / (2.0*a);
+        hit_p = o + d*myt;
+        if(myt > kEpsilon){
+            if(hit_p.y > y0 && hit_p.y < y1){
+                tmin = myt;
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 void OpenCylinder::set_y0(const float y0_){
     y0 = y0_;
