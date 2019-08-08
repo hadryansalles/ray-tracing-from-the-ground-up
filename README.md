@@ -1,6 +1,11 @@
 # Ray-Tracing-from-the-Ground-Up
 software from the book Ray Tracing from the Ground Up by Kevin Suffern
 
+Shadow
+
+![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/images/Shadows.png)
+
+
 Glossy Material
 
 ![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/images/Specular%20Highlight.png)
@@ -40,7 +45,7 @@ Grid
 
 15 - Specular Reflection     : complete
 
-16 - Shadows                 : --------
+16 - Shadows                 : complete
 
 17 - Ambient Occlusion       : --------
 
