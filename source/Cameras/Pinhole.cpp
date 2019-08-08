@@ -41,8 +41,7 @@ void Pinhole::render_scene(World& w){
     w.openWindow(vp->hres, vp->vres);
     vp->s /= zoom;
     ray.o = eye;
-    vp->sampler_ptr->generate_samples();
-    
+	    
 	// TIME MANAGER
 	struct timespec start_processing;
 	struct timespec start_displaying;

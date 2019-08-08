@@ -23,9 +23,11 @@ public:
     virtual void render_scene(World& w) = 0;
 
     void set_eye(const Point3D eye_p);
+    void set_eye(const float x, const float y, const float z);
     Point3D get_eye() const;
     
     void set_lookat(const Point3D lookat);
+    void set_lookat(const float x, const float y, const float z);
     Point3D get_lookat() const;
 
     void set_up(const Vector3D up_d);

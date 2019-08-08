@@ -67,7 +67,6 @@ void ThinLens::render_scene(World& w){
 
     w.openWindow(vp->hres, vp->vres);
     vp->s /= zoom;
-    vp->sampler_ptr->generate_samples();
     
 	// TIME MANAGER
 	struct timespec start_processing;

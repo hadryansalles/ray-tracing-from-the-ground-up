@@ -10,7 +10,6 @@ void Orthographic::render_scene(World& w){
 	Ray			ray;					
 	ViewPlane* vp = &w.vp;
     float		zw		= 100;			// hardwired in
-	vp->sampler_ptr->generate_samples();
 	Point2D sp; // sample point in a square
 	Point2D pp; // sample point pixel
 	ray.d = Vector3D(0, 0, -1);

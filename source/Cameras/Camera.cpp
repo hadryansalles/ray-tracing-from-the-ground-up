@@ -21,12 +21,21 @@ void Camera::compute_uvw(){
 void Camera::set_eye(const Point3D eye_p){
     eye = eye_p;
 }
+
+void Camera::set_eye(const float x, const float y, const float z){
+    eye = Point3D(x, y, z);
+}
+
 Point3D Camera::get_eye() const{
     return eye;
 }
 
 void Camera::set_lookat(const Point3D lookat){
     look_at = lookat;
+}
+
+void Camera::set_lookat(const float x, const float y, const float z){
+    look_at = Point3D(x, y, z);
 }
 
 Point3D Camera::get_lookat() const{
