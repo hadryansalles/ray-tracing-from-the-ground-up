@@ -7,7 +7,7 @@ ViewPlane::ViewPlane(void)
 		gamma(1.0),
 		inv_gamma(1.0),
 		show_out_of_gamut(false),
-		sampler_ptr(new Regular()),
+		sampler_ptr(new Regular(1)),
 		num_samples(1)
 {}
 
@@ -18,7 +18,7 @@ ViewPlane::ViewPlane(const ViewPlane& vp)
 		gamma(vp.gamma),
 		inv_gamma(vp.inv_gamma),
 		show_out_of_gamut(vp.show_out_of_gamut),
-		sampler_ptr(vp.sampler_ptr),
+		sampler_ptr(vp.sampler_ptr->clone()),
 		num_samples(vp.num_samples)
 {}
 
@@ -58,7 +58,7 @@ void ViewPlane::set_samples(const int samples){
 		delete sampler_ptr;
 		sampler_ptr = NULL;
 	}
-	if(samples != 1){
+	if(samples > 1){
 		sampler_ptr = new MultiJittered(samples);
 		this->num_samples = samples;
 	}

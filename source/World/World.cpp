@@ -21,6 +21,7 @@
 #include "../Light/Directional.hpp"
 #include "../Light/PointLight.hpp"
 #include "../Light/Ambient.hpp"
+#include "../Light/AmbientOccluder.hpp"
 
 // Samplers
 #include "../Samplers/MultiJittered.hpp"
@@ -55,7 +56,8 @@
 //#include "../build/BuildBox.hpp"
 //#include "../build/BuildSphereGrid.hpp"
 //#include "../build/BuildGlossy.hpp"
-#include "../build/BuildShadowsTest.hpp"
+//#include "../build/BuildShadowsTest.hpp"
+#include "../build/BuildAmbientOcclusion.hpp"
 //#include "../build/BuildSimpleMesh.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildBBCoverPicLight.hpp"
