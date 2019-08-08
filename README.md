@@ -1,6 +1,10 @@
 # Ray-Tracing-from-the-Ground-Up
 software from the book Ray Tracing from the Ground Up by Kevin Suffern
 
+Ambient Occlusion (Regular Sampler: 1x, 4x, 16x, 256x)
+
+![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/images/Ambient%20Occlusion.png)
+
 Shadow
 
 ![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/images/Shadows.png)
@@ -27,7 +31,7 @@ Grid
  
  6 - Disk Samples            : complete
  
- 7 - Hemisphere Samples      : --------
+ 7 - Hemisphere Samples      : complete
  
  8 - Perpective Viewing      : complete
  
@@ -47,7 +51,7 @@ Grid
 
 16 - Shadows                 : complete
 
-17 - Ambient Occlusion       : --------
+17 - Ambient Occlusion       : complete
 
 18 - Area Lights             : --------
 
