@@ -21,6 +21,8 @@ public:
     void set_ka(const float k);
     void set_kd(const float k);
     void set_cd(const RGBColor& c);
+    void set_cd(const float r, const float g, const float b);
+    void set_cd(const float a); 
     virtual RGBColor shade(ShadeRec& sr);
 
 private:

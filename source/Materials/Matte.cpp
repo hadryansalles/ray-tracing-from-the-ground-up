@@ -99,6 +99,16 @@ void Matte::set_cd(const RGBColor& c){
     diffuse_brdf->set_cd(c);
 }   
 
+void Matte::set_cd(const float r, const float g, const float b){
+    ambient_brdf->set_cd(RGBColor(r, g, b));
+    diffuse_brdf->set_cd(RGBColor(r, g, b));
+}
+
+void Matte::set_cd(const float a){
+    ambient_brdf->set_cd(RGBColor(a));
+    diffuse_brdf->set_cd(RGBColor(a));
+}
+
 RGBColor Matte::shade(ShadeRec& sr){
     Vector3D wo = -sr.ray.d;
     RGBColor L = ambient_brdf->rho(sr, wo)*sr.w.ambient_ptr->L(sr);
