@@ -61,7 +61,7 @@ Grid
 
 18 - Area Lights             : 70%
 
-19 - Ray-Object Intersections: complete
+19 - Ray-Object Intersections: 70%
 
 20 - Affine Transformations  : --------
 
