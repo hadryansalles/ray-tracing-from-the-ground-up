@@ -3,27 +3,31 @@ software from the book Ray Tracing from the Ground Up by Kevin Suffern
 
 currently in chapter 24.
 
+Mirror Reflection
+
+![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/build/images/Mirror%20Reflection.png)
+
 Area Lights
 
-![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/images/Area%20Lights.png)
+![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/build/images/Area%20Lights.png)
 
 Ambient Occlusion (Regular Sampler: 1x, 4x, 16x, 256x)
 
-![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/images/Ambient%20Occlusion.png)
+![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/build/images/Ambient%20Occlusion.png)
 
 Shadow
 
-![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/images/Shadows.png)
+![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/build/images/Shadows.png)
 
 
 Glossy Material
 
-![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/images/Specular%20Highlight.png)
+![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/build/images/Specular%20Highlight.png)
 
 
 Grid
 
-![alt text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/images/1000%20spheres%20grid.png)
+![alt text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/build/images/1000%20spheres%20grid.png)
 
  1 - Design and Programming  : complete
  
@@ -71,7 +75,7 @@ Grid
 
 23 - Triangle Meshes         : DISCONTINUED
 
-24 - Mirror Reflection       : --------
+24 - Mirror Reflection       : complete
 
 25 - Glossy Reflection       : --------
 
