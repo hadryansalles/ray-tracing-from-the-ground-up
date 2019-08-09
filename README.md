@@ -1,7 +1,7 @@
 # Ray-Tracing-from-the-Ground-Up
 software from the book Ray Tracing from the Ground Up by Kevin Suffern
 
-currently in chapter 24.
+currently in chapter 25.
 
 Mirror Reflection
 
