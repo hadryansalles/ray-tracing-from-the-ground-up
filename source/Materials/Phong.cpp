@@ -137,6 +137,18 @@ void Phong::set_cd(const RGBColor& c){
     specular_brdf->set_cd(c);
 }   
 
+void Phong::set_cd(const float r, const float g, const float b){
+    ambient_brdf->set_cd(RGBColor(r, g, b));
+    diffuse_brdf->set_cd(RGBColor(r, g, b));
+    specular_brdf->set_cd(RGBColor(r, g, b));
+}   
+
+void Phong::set_cd(const float a){
+    ambient_brdf->set_cd(RGBColor(a));
+    diffuse_brdf->set_cd(RGBColor(a));
+    specular_brdf->set_cd(RGBColor(a));
+}   
+
 void Phong::set_exp(const float exp_){
     specular_brdf->set_exp(exp_);
 }

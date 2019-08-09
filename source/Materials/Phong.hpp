@@ -27,6 +27,9 @@ public:
     void set_ks(const float k);
     void set_exp(const float exp_);
     void set_cd(const RGBColor& c);
+    void set_cd(const float r, const float g, const float b);
+    void set_cd(const float a); 
+        
 
     virtual RGBColor shade(ShadeRec& sr);
     virtual RGBColor area_light_shade(ShadeRec& sr);
