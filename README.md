@@ -59,7 +59,7 @@ Grid
 
 17 - Ambient Occlusion       : complete
 
-18 - Area Lights             : complete
+18 - Area Lights             : 70%
 
 19 - Ray-Object Intersections: complete
 
