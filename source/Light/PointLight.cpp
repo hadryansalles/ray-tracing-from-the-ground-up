@@ -24,6 +24,10 @@ void PointLight::set_location(const Vector3D location_){
     location = location_;
 }
 
+void PointLight::set_location(const float x, const float y, const float z){
+    location = Vector3D(x, y, z);
+}
+
 Vector3D PointLight::get_direction(ShadeRec& sr){
     return ((location - sr.hit_point).hat());
 }

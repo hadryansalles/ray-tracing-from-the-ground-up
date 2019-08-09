@@ -9,6 +9,7 @@ public:
 
     Vector3D get_location() const;
     void set_location(const Vector3D location_);
+    void set_location(const float x, const float y, const float z);
 
     Vector3D get_direction(ShadeRec& sr);
     RGBColor L(ShadeRec& sr);
