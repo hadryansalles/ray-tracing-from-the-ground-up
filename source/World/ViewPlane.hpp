@@ -15,6 +15,7 @@ public:
 	bool show_out_of_gamut;							// display red if RGBColor out of gamut								
 	Sampler* sampler_ptr;
 	int num_samples;
+	int max_depth;
 
 public:
 	ViewPlane();   									// default Constructor
@@ -29,4 +30,5 @@ public:
 	void set_sampler(Sampler* sampler_p);
 	void set_gamma(const float g);
 	void set_gamut_display(const bool show);				
+	void set_max_depth(const int max_d);
 };

@@ -35,6 +35,7 @@
 //#include "../Tracers/Sinusoid.hpp"
 #include "../Tracers/RayCast.hpp"
 #include "../Tracers/AreaLighting.hpp"
+#include "../Tracers/Whitted.hpp"
 
 // Cameras
 #include "../Cameras/Pinhole.hpp"
@@ -45,6 +46,7 @@
 #include "../Materials/Matte.hpp"
 #include "../Materials/Phong.hpp"
 #include "../Materials/Emissive.hpp"
+#include "../Materials/Reflective.hpp"
 
 // utilities
 #include "../Utilities/Vector3D.hpp"
@@ -63,7 +65,9 @@
 //#include "../build/BuildGlossy.hpp"
 //#include "../build/BuildShadowsTest.hpp"
 //#include "../build/BuildAmbientOcclusion.hpp"
-#include "../build/BuildAreaLight.hpp"
+//#include "../build/BuildAreaLight.hpp"
+//#include "../build/BuildReflective.hpp"
+#include "../build/BuildMirrorHouse.hpp"
 //#include "../build/BuildSimpleMesh.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildBBCoverPicLight.hpp"
