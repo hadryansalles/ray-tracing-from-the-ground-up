@@ -5,7 +5,7 @@ Sampler::Sampler(int samples, int sets) :
     num_sets(sets),
     count(0),
     jump(0) { 
-    this->samples.reserve(num_samples*num_sets);
+    //this->samples.reserve(num_samples*num_sets);
 }
 
 Sampler::Sampler(const Sampler& samp):
@@ -13,19 +13,19 @@ Sampler::Sampler(const Sampler& samp):
     num_sets(samp.num_sets),
     count(samp.count),
     jump(samp.jump) {
-    this->samples.reserve(num_samples*num_sets);
+    //this->samples.reserve(num_samples*num_sets);
 }
 
 Sampler& Sampler::operator=(const Sampler& rhs){
     if(this == &rhs){
         return (*this);
     }
+    this->samples.clear();
     num_samples = rhs.num_samples;
     num_sets = rhs.num_sets;
     count = rhs.count;
     jump = rhs.jump;
-    this->samples.clear();
-    this->samples.reserve(num_samples*num_sets);  
+    //this->samples.reserve(num_samples*num_sets);  
 }
 
 Sampler::~Sampler(){

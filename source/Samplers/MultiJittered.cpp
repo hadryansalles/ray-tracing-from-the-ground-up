@@ -27,7 +27,7 @@ MultiJittered::~MultiJittered()
 {}
 
 void MultiJittered::generate_samples() {
-	int n = (int)sqrt((float)num_samples);
+	int n = (int)sqrt(num_samples);
 	float subcell_width = 1.0 / ((float) num_samples);
 	
 	Point2D fill_point;
