@@ -67,7 +67,7 @@
 //#include "../build/BuildAmbientOcclusion.hpp"
 //#include "../build/BuildAreaLight.hpp"
 //#include "../build/BuildReflective.hpp"
-#include "../build/BuildMirrorHouse.hpp"
+#include "../build/BuildMirrorHall.hpp"
 //#include "../build/BuildSimpleMesh.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildBBCoverPicLight.hpp"
