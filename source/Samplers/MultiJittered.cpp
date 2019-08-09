@@ -1,5 +1,4 @@
 #include "MultiJittered.hpp"
-#include <stdio.h>
 
 MultiJittered::MultiJittered(const int num_samples, const int m)
 	: Sampler(num_samples, m) {
