@@ -93,7 +93,7 @@ void ThinLens::render_scene(World& w){
                 
                 ray.o = eye + (lp.x*u + lp.y*v);
 				ray.d = ray_direction(pp, lp);
-                L += w.tracer_ptr->trace_ray(ray);
+                L += w.tracer_ptr->trace_ray(ray, depth);
 			}
          
 			L /= vp->num_samples;

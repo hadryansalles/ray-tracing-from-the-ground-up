@@ -12,6 +12,7 @@ void Orthographic::render_scene(World& w){
     float		zw		= 100;			// hardwired in
 	Point2D sp; // sample point in a square
 	Point2D pp; // sample point pixel
+	int depth = 0;
 	ray.d = Vector3D(0, 0, -1);
 
 	w.openWindow(vp->vres, vp->hres);
@@ -35,7 +36,7 @@ void Orthographic::render_scene(World& w){
 				pp.x = vp->s*(c - 0.5*vp->hres + sp.x);
 				pp.y = vp->s*(r - 0.5*vp->vres + sp.y);
 				ray.o = Point3D(pp.x, pp.y, zw);
-				pixel_color += w.tracer_ptr->trace_ray(ray);
+				pixel_color += w.tracer_ptr->trace_ray(ray, depth);
 			}
 			pixel_color /= vp->num_samples;
 				
