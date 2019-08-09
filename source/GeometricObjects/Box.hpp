@@ -5,7 +5,7 @@
 class Box : public GeometricObject {
 public:
     Box(Material* material_p = NULL);
-    Box(Point3D p0_, Point3D dimensions_, Material* material_p = NULL);
+    Box(Point3D p0_, Point3D p1_, Material* material_p = NULL);
     Box(const Box& box);
     
     virtual Box* clone() const;

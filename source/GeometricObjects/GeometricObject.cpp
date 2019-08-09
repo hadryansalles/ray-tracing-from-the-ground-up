@@ -59,10 +59,18 @@ void GeometricObject::add_object(GeometricObject* object_ptr){
 Normal GeometricObject::get_normal() const{
 	return Normal();
 } 
-Normal GeometricObject::get_normal(const Point3D& p){
+Normal GeometricObject::get_normal(const Point3D& p) const{
 	return Normal();
 } 
 
 bool GeometricObject::shadow_hit(const Ray& ray, float& tmin) const { 
 	return false;
+}
+
+Point3D GeometricObject::sample(){
+	return Point3D();
+}
+
+float GeometricObject::pdf(const ShadeRec& sr){
+	return 1.0;
 }

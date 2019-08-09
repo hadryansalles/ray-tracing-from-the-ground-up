@@ -7,11 +7,11 @@ Box::Box(Material* material_p)
     , dimensions(0)
 {}
 
-Box::Box(Point3D p0_, Point3D dimensions_, Material* material_p)
+Box::Box(Point3D p0_, Point3D p1_, Material* material_p)
     : GeometricObject(material_p)
     , p0(p0_)
-    , p1(p0_ + dimensions_)
-    , dimensions(dimensions_)
+    , p1(p1_)
+    , dimensions(p1.x - p0.x, p1.y - p0.y, p1.z - p0.z)
 {}
 
 Box::Box(const Box& box)

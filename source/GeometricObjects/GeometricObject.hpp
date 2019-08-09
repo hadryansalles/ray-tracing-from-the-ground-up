@@ -22,7 +22,10 @@ public:
 	virtual void add_object(GeometricObject* object_ptr);
 	
 	virtual Normal get_normal() const; 
-	virtual Normal get_normal(const Point3D& p); 
+	virtual Normal get_normal(const Point3D& p) const;
+	
+	virtual Point3D sample();
+    virtual float pdf(const ShadeRec& sr);
 
 protected:
 	mutable Material* material_ptr;
