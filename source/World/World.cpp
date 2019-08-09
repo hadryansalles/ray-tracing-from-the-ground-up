@@ -2,6 +2,7 @@
 #include "../Utilities/Constants.hpp"
 
 // Window
+#include "../Window/Window.hpp"
 #include "../Window/Window-THREAD.hpp"
 #include "../Window/Window-NOTHREAD.hpp"
 
@@ -16,12 +17,14 @@
 #include "../GeometricObjects/Grid.hpp"
 #include "../GeometricObjects/SmoothMeshTriangle.hpp"
 #include "../GeometricObjects/FlatMeshTriangle.hpp"
+#include "../GeometricObjects/Rectangle.hpp"
 
 // Lights
 #include "../Light/Directional.hpp"
 #include "../Light/PointLight.hpp"
 #include "../Light/Ambient.hpp"
 #include "../Light/AmbientOccluder.hpp"
+#include "../Light/AreaLight.hpp"
 
 // Samplers
 #include "../Samplers/MultiJittered.hpp"
@@ -31,6 +34,7 @@
 //#include "../Tracers/MultipleObjects.hpp"
 //#include "../Tracers/Sinusoid.hpp"
 #include "../Tracers/RayCast.hpp"
+#include "../Tracers/AreaLighting.hpp"
 
 // Cameras
 #include "../Cameras/Pinhole.hpp"
@@ -40,6 +44,7 @@
 // Materials
 #include "../Materials/Matte.hpp"
 #include "../Materials/Phong.hpp"
+#include "../Materials/Emissive.hpp"
 
 // utilities
 #include "../Utilities/Vector3D.hpp"
@@ -57,7 +62,8 @@
 //#include "../build/BuildSphereGrid.hpp"
 //#include "../build/BuildGlossy.hpp"
 //#include "../build/BuildShadowsTest.hpp"
-#include "../build/BuildAmbientOcclusion.hpp"
+//#include "../build/BuildAmbientOcclusion.hpp"
+#include "../build/BuildAreaLight.hpp"
 //#include "../build/BuildSimpleMesh.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildBBCoverPicLight.hpp"
