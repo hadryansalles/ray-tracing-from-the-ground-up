@@ -1,4 +1,4 @@
-APP = RTX
+APP = RTX.out
 CC = g++
 FLAGS =	-ansi -pedantic
 LINKS = -lSDL2 -lpthread -pthread -std=c++11
