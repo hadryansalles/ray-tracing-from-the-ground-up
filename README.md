@@ -1,6 +1,12 @@
 # Ray-Tracing-from-the-Ground-Up
 software from the book Ray Tracing from the Ground Up by Kevin Suffern
 
+currently in chapter 24.
+
+Area Lights
+
+![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/images/Area%20Lights.png)
+
 Ambient Occlusion (Regular Sampler: 1x, 4x, 16x, 256x)
 
 ![alt_text](https://github.com/hadryans/Ray-Tracing-from-the-Ground-Up/blob/master/images/Ambient%20Occlusion.png)
@@ -53,7 +59,7 @@ Grid
 
 17 - Ambient Occlusion       : complete
 
-18 - Area Lights             : --------
+18 - Area Lights             : complete
 
 19 - Ray-Object Intersections: complete
 
