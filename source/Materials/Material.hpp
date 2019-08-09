@@ -15,5 +15,7 @@ public:
     virtual RGBColor area_light_shade(ShadeRec& sr);
     virtual RGBColor path_shade(ShadeRec& sr);
 
+    virtual RGBColor get_Le(ShadeRec& sr) const;
+
     Material& operator= (const Material& rhs);
 };

@@ -27,3 +27,8 @@ RGBColor Material::area_light_shade(ShadeRec& sr){
 RGBColor Material::path_shade(ShadeRec& sr){
     return black;
 }
+
+RGBColor Material::get_Le(ShadeRec& sr) const {
+    return black;
+}
+    

@@ -27,7 +27,9 @@ public:
     void set_ks(const float k);
     void set_exp(const float exp_);
     void set_cd(const RGBColor& c);
+
     virtual RGBColor shade(ShadeRec& sr);
+    virtual RGBColor area_light_shade(ShadeRec& sr);
 
 private:
     Lambertian* ambient_brdf;
