@@ -5,6 +5,7 @@ LINKS = -lSDL2 -lpthread -pthread -std=c++11
 RM = rm -rf
 
 SOURCE = 	$(wildcard ./source/BRDF/*.cpp) \
+			$(wildcard ./source/BTDF/*.cpp) \
 			$(wildcard ./source/Cameras/*.cpp) \
 			$(wildcard ./source/GeometricObjects/*.cpp) \
 			$(wildcard ./source/Light/*.cpp) \
