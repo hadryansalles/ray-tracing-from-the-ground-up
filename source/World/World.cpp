@@ -47,6 +47,7 @@
 #include "../Materials/Phong.hpp"
 #include "../Materials/Emissive.hpp"
 #include "../Materials/Reflective.hpp"
+#include "../Materials/Transparent.hpp"
 
 // utilities
 #include "../Utilities/Vector3D.hpp"
@@ -67,7 +68,8 @@
 //#include "../build/BuildAmbientOcclusion.hpp"
 //#include "../build/BuildAreaLight.hpp"
 //#include "../build/BuildReflective.hpp"
-#include "../build/BuildMirrorHall.hpp"
+//#include "../build/BuildMirrorHall.hpp"
+#include "../build/BuildTransparency.hpp"
 //#include "../build/BuildSimpleMesh.hpp"
 //#include "../build/BuildBBCoverPic.hpp"
 //#include "../build/BuildBBCoverPicLight.hpp"
