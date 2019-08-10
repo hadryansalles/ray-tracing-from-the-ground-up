@@ -30,7 +30,6 @@ public:
     void set_cd(const float r, const float g, const float b);
     void set_cd(const float a); 
         
-
     virtual RGBColor shade(ShadeRec& sr);
     virtual RGBColor area_light_shade(ShadeRec& sr);
 
